@@ -14,7 +14,4 @@ echo"TRIANGULO<br>";
 $triangulo->SetColor("<br>Color: Blanco");
 $triangulo->ToString();
 
-
-
-
 ?>

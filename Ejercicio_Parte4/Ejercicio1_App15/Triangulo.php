@@ -31,7 +31,7 @@ class Triangulo extends FiguraGeometrica
     }
     public function ToString()
     {
-        return $this->Dibujar();
+        return parent::ToString();
     }
 }
 
