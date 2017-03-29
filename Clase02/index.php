@@ -26,7 +26,7 @@ echo "<br>ATRIBUTO DE INSTANCIA<br>";
 var_dump($miCalculadora->atributodeinstancia);
 //var_dump($resultado);
 
-
+//$this->nombre="lalala"; tambien es otra forma para llegar al metodo.
 
 
 
