@@ -1,18 +1,21 @@
 <?php
-
-//Aplicación Nº 8 (Carga aleatoria)
-//Imprima los valores del vector asociativo siguiente usando la estructura de control foreach:
-
-$v[1]=90; 
-$v[30]=7; 
-$v['e']=99; 
-$v['hola']= 'mundo';
-
-foreach($v as $key)
+//Aplicación Nº 7 (Mostrar impares)
+//Generar una aplicación que permita cargar los primeros 10 números impares en un Array.
+//Luego imprimir (utilizando la estructura for) cada uno en una línea distinta (recordar que el
+//salto de línea en HTML es la etiqueta <br/>). Repetir la impresión de los números utilizando
+//las estructuras while y foreach.
+$cont = 0;
+for($i=0;$i<10;$i++)
 {
-    echo "$key<br>";
-    //var_dump("$key<br>");
+    $arrayimpar=array($i);
+    
 }
+
+var_dump($arrayimpar);
+
+
+
+
 
 
 ?>
