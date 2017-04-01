@@ -1,8 +1,6 @@
 <?php
-/**
- * 
- */
-abstract class Persona
+
+abstract class Persona extends Fabrica
 {
     private $_apellido;
     private $_dni;
@@ -32,7 +30,10 @@ abstract class Persona
     abstract function Hablar($idioma);
     public function ToString()
     {
-        return $this->getApellido()."-".$this->getNombre()."-".$this->getDNI()."-".$this->getSexo()."-";
+        return "Apellido: ".$this->getApellido()."-".
+        "Nombre: ".$this->getNombre()."-".
+        "DNI: ".$this->getDNI()."-".
+        "Sexo: ".$this->getSexo()."-";
     }
 
 

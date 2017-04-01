@@ -7,10 +7,8 @@ class Empleado extends Persona
     
     function __construct($nombre,$apellido,$dni,$sexo,$legajo,$sueldo)
     {
-        parent::$_nombre=$nombre;
-        parent::$_apellido=$apellido;
-        parent::$_dni=$dni;
-        parent::$_sexo=$sexo;
+        parent::__construct($nombre,$apellido,$dni,$sexo);
+        
         $this->_legajo=$legajo;
         $this->_sueldo=$sueldo;
 
@@ -22,11 +20,13 @@ class Empleado extends Persona
     {return $this->_sueldo;}
     function Hablar($idioma)
     {
-       return "El empleado habla ".$idioma;
+       return "El empleado habla: ".$idioma;
     }
     public function ToString()
     {
-        return parent::ToString()."-".$this->_legajo."-".$this->_sueldo;
+        return parent::ToString().
+        "Legajo: ".$this->_legajo."-".
+        "Sueldo: ".$this->_sueldo;
 
     }
 
