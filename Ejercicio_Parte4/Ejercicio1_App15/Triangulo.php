@@ -22,23 +22,9 @@ class Triangulo extends FiguraGeometrica
     }
     public function Dibujar()
     {
-    //    echo "  *<br>";
-    //    echo " ***<br>";
-    //    echo "*****";
-        for($i=1;$i<($this->_base+1);$i++)
-        {
-             
-             $asteriscos="";
-            for($j=1;$j<$i;$j++)
-            {
-                $asteriscos=$asteriscos."*";
-            }
-            echo $asteriscos."<br>";
-    
-            
-        }
-        
-
+       echo "  *<br>";
+       echo " ***<br>";
+       echo "*****";
        echo $this->_color; 
        echo "<br>Perimetro: $this->_perimetro";
        echo "<br>Superficie: $this->_superficie";
