@@ -12,21 +12,16 @@ class Auto //extends AnotherClass
     
     function __construct($marca="",$color="",$precio=0,$fecha='')
     {
-        switch (count(func_get_args())) {
-            case '2':
+        
                 $this->_marca = $marca;
                 $this->_color = $color;
-                break;
-            case '3':
-                 $this->__construct($marca,$color);
-                 $this->_precio = $precio; 
-            case '4':
-                $this->__construct($marca,$color,$precio);
+               // $this->__construct($marca,$color);
+                $this->_precio = $precio; 
+      
+               // $this->__construct($marca,$color,$precio);
                 $this->_fecha = $fecha;
-            default:
-                # code...
-                break;
-        }
+        
+        
 
     }
     // Realizar un método de instancia llamado “AgregarImpuestos”, que recibirá un doble por

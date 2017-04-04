@@ -22,19 +22,31 @@ $autoDosbis = new Auto("Chvrolet","Negro",2000);
 $autoTres = new Auto("Volkswagen","Azul",300000,date('d/m/y'));
 
 
-$autoUno->AgregarImpuesto(1500);
+$autoUno->AgregarImpuestos(1500);
 var_dump($autoUno);
 echo "<br>";
-$autoUnobis->AgregarImpuesto(1500);
+$autoUnobis->AgregarImpuestos(1500);
 var_dump($autoUnobis);
 echo "<br>";
-$autoDos->AgregarImpuesto(1500);
+$autoDos->AgregarImpuestos(1500);
 var_dump($autoDos);
 
 echo "<br><br>";
 echo "Importe Sumado: ".Auto::Add($autoUno,$autoUnobis);
 echo "<br><br>";
-echo "Comparacion: <br>".Auto::Equals($autoUno,$autoDos);
+echo "Comparacion: <br>"."Auto1 con Auto2: ";
+if(Auto::Equals($autoUno,$autoUnobis))
+{
+    echo "<br>Son iguales.<br>";
+}
+else{echo "<br>No son iguales.<br>";}
+echo "<br><br>";
+echo "Comparacion: <br>"."Auto1 con Auto3: ";
+if(Auto::Equals($autoUno,$autoTres))
+{
+    echo "<br>Son iguales.<br>";
+}
+else{echo "<br>No son iguales.<br>";}
 
 
 
