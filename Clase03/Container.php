@@ -19,6 +19,16 @@ class Container// extends AnotherClass
     {
         array_push($this->producto,$producto);
     }
+    public function GuardarProductos()
+    {
+        $ListadoDeProductos=fopen("ListadoDeProductos.txt","w");
+
+        foreach ($this->producto as $key) {
+            fwrite($ListadoDeProductos,$key->ToString());
+        }
+        fclose($ListadoDeProductos);
+        
+    }
 }
 
 
