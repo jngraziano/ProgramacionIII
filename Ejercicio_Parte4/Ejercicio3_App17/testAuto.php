@@ -31,6 +31,12 @@ echo "<br>";
 $autoDos->AgregarImpuesto(1500);
 var_dump($autoDos);
 
+echo "<br><br>";
+echo "Importe Sumado: ".Auto::Add($autoUno,$autoUnobis);
+echo "<br><br>";
+echo "Comparacion: <br>".Auto::Equals($autoUno,$autoDos);
+
+
 
 
 
