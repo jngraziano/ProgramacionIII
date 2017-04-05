@@ -2,7 +2,7 @@
 //COMENTO TODO LO QUE HICE EN LA PRIMERA PARTE DE LA CLASE
 
  require "Producto.php";
-// // require "Container.php";
+ require "Container.php";
 
 // $producto1 = new Producto(10,"Celular",5000);
 
@@ -33,40 +33,47 @@
 
 //echo "Hola mundo";
 //con el var dump sirve para ver que trae el html.
-echo "<br>";
+
 //var_dump($_REQUEST);
-echo "<br>";echo "<br>";
+
 //el request toma los datos por post o por request. 
 //el get es lo mas comun, lo recomendable es usar el post.
 //var_dump($_GET);
-echo "<br>";echo "<br>";
+
 //este es el var_dump de post para mostrar los datos que recibi.
-echo "var_dump del _POST:<br>";
+echo "var_dump del _POST (osea lo que recibe y tiene cargado):<br>";
 var_dump($_POST);
+echo "<br>Fin del var_dump";
 echo "<br>";
-$productohtml = new Producto($_POST["Codigo"],$_POST["Descripcion"],$_POST["Importe"]);
+//Creo un producto con los datos que ingresa el usuario (los que recibe el _post)
+$productohtml = new Producto($_POST["Codigo"],$_POST["Descripcion"],$_POST["Importe"],$_POST["NombreArchivo"]);
+//uso el isset que devuelve un bool. En este caso lo uso para ver si 
+//el usuario puso el boton Guardar.
 if(isset($_POST["Guardar1"]))
 {
-    $archivohtml=fopen("Archivohtm.txt","w");
+    $archivohtml=fopen($productohtml->GetNombreArchivo(),"w");
     fwrite($archivohtml,$productohtml->ToString());
     fclose($archivohtml);
 }
-else {
-    $archivomemoria=fopen("Archivohtm.txt","r");
+else if(isset($_POST["Leer1"])){
+    $archivomemoria=fopen($productohtml->GetNombreArchivo(),"r");
     $renglon=fgets($archivomemoria);//devuelve un renglon
     //fijarse de usar fgets o fread
     
-    $miarray=explode("-",$renglon);
+    $miarray=explode(";",$renglon);
     //me permite separar un string en un array mediante
     //mi delimitador
 
     echo "<br>";
+    echo "Var_dump del array traido por archivo:<br>";
     var_dump($miarray);
+    echo "<br>Fin del var_dump.<br><br>";
+    echo "Cargue los datos del array en un producto y uso su Tostring delimitado por ; (puntoycoma):<br>";
     $productotest = new Producto($miarray[0],$miarray[1],$miarray[2]);
-    echo "<br>".$productotest->ToString();
+    echo $productotest->ToString();
 
     //para hacer en casa para completar este ejercicio
-    //1-En la clase container, crear el metodo leer de archivo
+    //1-En la clase container, crear el metodo leerdearchivo
     //que lea de un archivo, un listado de producto cuyos
     //atributos estan separados por ;
     //luego cargar el array de producto con los objetos creados
@@ -78,6 +85,19 @@ else {
     //backup, cambiandole el nombre por el nombre+fecha
     //3-A leer, si el archivo no existe, infromarlo.
     
+}
+else if(isset($_POST["Buscar1"])){
+    if($_POST["Buscar1"]==$productohtml->GetNombreArchivo())
+    {
+        
+        echo "Muestro producto: <br>"."<br>".$productohtml->ToString();
+    }
+    else {
+        echo "Busqueda de archivo:<br>No se encontro el archivo.";
+    }
+}
+else {
+    # code...
 }
 
 
