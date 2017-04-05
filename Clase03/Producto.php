@@ -18,7 +18,7 @@ class Producto
 
     public function ToString()
     {
-        return "Codigo: ".$this->codigo."Descripcion: ".$this->descripcion."Importe: ".$this->importe."\r\n";
+        return $this->codigo."-".$this->descripcion."-".$this->importe;
     }
 }
 
