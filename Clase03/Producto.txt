@@ -1,1 +1,0 @@
-Codigo: 10	Descripcion: Celular	Importe: 5000

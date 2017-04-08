@@ -7,12 +7,18 @@ class Container// extends AnotherClass
 {
     public $numero=0;
     public $producto;
+    public $nombrearchivo="";
     
-    function __construct($num)
+    function __construct($num,$nomarc)
     {
         $this->numero=$num;
+        $this->nombrearchivo=$nomarc;
         $this->producto = array();
         
+    }
+     public function GetNombreArchivo()
+    {
+        return $this->nombrearchivo;
     }
 
     public function AgregarProducto($producto)
@@ -31,13 +37,18 @@ class Container// extends AnotherClass
     }
     public function LeerDeArchivo($archivo)
     {
-        
-        $renglon=fgets($archivo);//devuelve un renglon
-        //fijarse de usar fgets o fread
-    
-         $arrayaux=explode(";",$renglon);
+        $archivoleido=fopen($archivo,"r");
 
-         array_push($this->producto,$arrayaux);
+        while (!feof($archivoleido))//Sirve para ver que no sea el final de la linea
+        {
+            $renglon=fgets($archivoleido);//devuelve un renglon
+            //fijarse de usar fgets o fread
+            $arrayaux=explode(";",$renglon);
+             array_push($this->producto,new Producto($arrayaux[0],$arrayaux[1],$arrayaux[2]));        
+            
+         }
+         var_dump($this->producto);
+
     }
      //1-En la clase container, crear el metodo leerdearchivo
     //que lea de un archivo, un listado de producto cuyos
