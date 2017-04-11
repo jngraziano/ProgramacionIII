@@ -29,6 +29,17 @@ class Empleado extends Persona
         "Sueldo: ".$this->_sueldo;
 
     }
+    public function setPathFoto($foto)
+        {
+            $this->_pathFoto = $foto;
+        }
+        public function ToString()
+        {
+            return  parent::ToString() ."-".
+                    $this->getLegajo() ."-".
+                    $this->getSueldo() ."-".
+                    $this->getPathFoto();
+        }
 
 }
 

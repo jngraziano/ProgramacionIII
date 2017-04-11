@@ -30,7 +30,7 @@ echo "Total de Sueldos: ". $fabrica1->CalcularSueldos();
 echo "<br><br>-Despues de eliminar al empleado<br>";
 $fabrica1->EliminarEmpleado($empleado4);
 echo $fabrica1->ToString();
-echo "<br>Total de Sueldos: ". $fabrica1->CalcularSueldos();
+echo "<br>Total de Sueldos: ". $fabrica1->CalcularSueldos()."<br>";
 
 
 
