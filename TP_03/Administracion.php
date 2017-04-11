@@ -1,6 +1,7 @@
 <?PHP
     require ("Empleado.php");
     
+    //validacion para que se completen todos los campos
     if( trim($_POST["VNombre"])=='' || 
         trim($_POST["VApellido"])=='' || 
         trim($_POST["VDNI"])=='' || 

@@ -11,13 +11,13 @@ class Empleado extends Persona
         
         $this->_legajo=$legajo;
         $this->_sueldo=$sueldo;
+        $this->_pathFoto=$pathFoto;
 
     }
 
-    public function getLegajo()
-    {return $this->_legajo;}
-    public function getSueldo()
-    {return $this->_sueldo;}
+     public function getLegajo(){return $this->_legajo;}
+        public function getPathFoto(){return $this->_pathFoto;}
+        public function getSueldo(){return $this->_sueldo;}
     function Hablar($idioma)
     {
        return "El empleado habla: ".$idioma;
