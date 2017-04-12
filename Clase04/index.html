@@ -3,13 +3,19 @@
     <body>
         
         <form action="Gestion.php" method="POST" enctype="multipart/form-data">
-                
-            <input type="text" name="Texto1" placeholder="Texto">
+        <!--enctype="multipart/form-data":
+        No characters are encoded. 
+        This value is required when you are using 
+        forms that have a file upload control-->
+          
+            <p style="color:red;"><b><u>Almacen de Imagenes</b></u></p>  
+            <input type="text" name="Texto1" placeholder="Coloque Nombre de Img">
             <!--placeholder sirve para mostrar en sombreado lo que queremos que ingrese el usuario dentro del cuadrado-->
-            <br>
-             <input type="submit" name="Aceptar1" value="Aceptar">
-               <br>
+             <br>
+            <p style="color:black;">Cargue la imagen deseada:</p>
             <input type="file" name="Archivo1">
+            <br><br>
+            <input type="submit" name="Aceptar1" value="Subir al repositorio">
           
            
 

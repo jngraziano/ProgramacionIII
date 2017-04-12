@@ -1,11 +1,14 @@
 <?php
-require "Fotos.php";
-echo "var_dump del files:<br>";
-var_dump($_FILES);
-echo "<br><br>";
+//require "Fotos.php";
+// echo "var_dump del files:<br>";
+// var_dump($_FILES);
+// echo "<br><br>";
 
 //Creo el directorio con el nombre y el "privilegio"
-mkdir("Fotos",0777);
+if(!file_exists("Fotos"))
+{mkdir("Fotos",0777);}
+
+
 
 //Creo un array donde en la posicion [0]
 //me guarda el nombre del archivo (uso $_FILES
@@ -30,7 +33,7 @@ if(!file_exists("Fotos"."/".$nombre.".".$namearray[1]))
 //pregunto al if si no existe dentro de la carpeta Fotos, el archivo subido
 {
 copy($_FILES["Archivo1"]["tmp_name"],"Fotos"."/".$nombre.".".$namearray[1]);
-echo"<br>Creado exitosamete";
+echo"<br>Imagen cargada exitosamente.";
 //muestro la foto en el servidor:
 
 //Si no existe copio el archivo
@@ -45,7 +48,7 @@ else {
     copy("Fotos"."/".$nombre.".".$namearray[1],"Backup"."/".$nombre.$fecha.".".$namearray[1]);
     echo "<br>Ya existia el archivo indicado.<br>Se creo un backup en una nueva carpeta";
 }
-echo "<br><br>"."Foto:<br><br>";
+
 require "Fotos.php";
 
 
