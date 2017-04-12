@@ -4,6 +4,8 @@
 // var_dump($_FILES);
 // echo "<br><br>";
 
+
+
 //Creo el directorio con el nombre y el "privilegio"
 if(!file_exists("Fotos"))
 {mkdir("Fotos",0777);}
@@ -29,13 +31,23 @@ $nombre = $_POST["Texto1"];
 //concatenado con un punto (para la extencion)
 //concatenado con la posicion [1] del array la cual tiene 
 //la extencion del archivo.
+
+
+
+
+if($_FILES["Archivo1"]["type"] == "image/jpeg" || 
+   $_FILES["Archivo1"]["type"] == "image/png" ||        //Realizo la validación para que no puedan subir un archivo que no
+   $_FILES["Archivo1"]["type"] == "image/bmp" ||        //sea de los formatos indicados. 
+   $_FILES["Archivo1"]["type"] == "image/gif" ||
+   $_FILES["Archivo1"]["type"] == "image/jpg" )
+{
 if(!file_exists("Fotos"."/".$nombre.".".$namearray[1]))
 //pregunto al if si no existe dentro de la carpeta Fotos, el archivo subido
 {
 copy($_FILES["Archivo1"]["tmp_name"],"Fotos"."/".$nombre.".".$namearray[1]);
 echo"<br>Imagen cargada exitosamente.";
 //muestro la foto en el servidor:
-
+require "Fotos.php";
 //Si no existe copio el archivo
 }
 else {
@@ -43,15 +55,18 @@ else {
 //creo la variable fecha
 //copio lo que habia en la carpeta fotos con el mismo nombre
 //a la carpeta Backup,sumandole al nombre, "backup + fecha actual"
-    mkdir("Backup",0777);
+    if(!file_exists("Backup"))
+    { mkdir("Backup",0777);}
+       
     $fecha=date('d-m-y');
     copy("Fotos"."/".$nombre.".".$namearray[1],"Backup"."/".$nombre.$fecha.".".$namearray[1]);
     echo "<br>Ya existia el archivo indicado.<br>Se creo un backup en una nueva carpeta";
+    require "Fotos.php";
+    }
 }
-
-require "Fotos.php";
-
-
-
-
+else {
+    echo "Formato No permitido o no se subio imagen.";
+    echo '<a href="index.html"><br>Volver a la Pagina Anterior<br></a>';
+    //Si el formato no es el indicado o no subio imagen lo indica y muestra un link al index.
+}
 ?>     
