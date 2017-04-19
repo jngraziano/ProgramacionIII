@@ -1,0 +1,9 @@
+L2furia:
+
+char mauro:
+ezevelasco
+toplevel
+
+mover:
+mober070
+creeper
