@@ -138,5 +138,102 @@ SELECT * FROM `productos`
 
 --12. Insertar un nuevo proveedor (únicamente con los campos obligatorios).
 SELECT * FROM `proveedores`
-INSERT INTO `proveedores` (Numero)
+
+INSERT INTO `proveedores`
 VALUES ()
+-- SELECT * FROM `proveedores`
+
+--  +--------+---------+-----------+------------+
+--  | Numero | Nombre  | Domicilio | Localidad  | 
+--  +--------+---------+-----------+------------+
+--  | 100    | Perez   | Peron 876 | Quilmes    | 
+--  | 101    | Gimenez | Mitre 750 | Avellaneda | 
+--  | 102    | Aguirre | Boedo 634 | Bernal     | 
+--  | 103    | null    | null      | null       | 
+--  +--------+---------+-----------+------------+
+-- 13. Insertar un nuevo proveedor (107), donde el nombre y la localidad son ‘Rosales’ y ‘La
+-- Plata’.
+INSERT INTO `proveedores` (Numero,Nombre,Localidad)
+VALUES (107,"Rosales","La Plata")
+--SELECT * FROM `proveedores`
+
+--  +--------+---------+-----------+------------+
+--  | Numero | Nombre  | Domicilio | Localidad  | 
+--  +--------+---------+-----------+------------+
+--  | 100    | Perez   | Peron 876 | Quilmes    | 
+--  | 101    | Gimenez | Mitre 750 | Avellaneda | 
+--  | 102    | Aguirre | Boedo 634 | Bernal     | 
+--  | 103    | null    | null      | null       | 
+--  | 107    | Rosales | null      | La Plata   | 
+--  +--------+---------+-----------+------------+
+
+--14. Cambiar los precios de los productos de tamaño ‘grande’ a 97,50.
+SELECT * from productos
+UPDATE productos
+SET Precio=97.50
+WHERE productos.Tamaño = "Grande"
+SELECT * from productos
+
+--  +---------+-------------+--------+---------+
+--  | pNumero | pNombre     | Precio | Tamaño  | 
+--  +---------+-------------+--------+---------+
+--  | 1       | Caramelos   | 1.5    | Chico   | 
+--  | 2       | Cigarrillos | 45.89  | Mediano | 
+--  | 3       | Gaseosa     | 97.5   | Grande  | 
+--  | 4       | Chocolate   | 25.35  | Chico   | 
+--  +---------+-------------+--------+---------+
+
+-- 15. Cambiar el tamaño de ‘Chico’ a ‘Mediano’ de todos los productos cuyas cantidades
+-- sean mayores a 300 inclusive.
+SELECT * from productos
+
+UPDATE productos, envios --Aca solo le paso las tablas
+SET Tamaño="Mediano" --le paso lo que quiero cambiar
+WHERE envios.Cantidad>=300 --condicion 1 
+AND productos.pNumero = envios.pNumero --condicion 2
+
+SELECT * from productos
+
+--  +---------+-------------+--------+---------+
+--  | pNumero | pNombre     | Precio | Tamaño  | 
+--  +---------+-------------+--------+---------+
+--  | 1       | Caramelos   | 1.5    | Mediano | 
+--  | 2       | Cigarrillos | 45.89  | Mediano | 
+--  | 3       | Gaseosa     | 97.5   | Mediano | 
+--  | 4       | Chocolate   | 25.35  | Chico   | 
+--  +---------+-------------+--------+---------+
+
+--16. Eliminar el producto número 1
+DELETE FROM `productos` 
+WHERE pNumero = 1
+SELECT * FROM `productos`
+
+--  +---------+-------------+--------+---------+
+--  | pNumero | pNombre     | Precio | Tamaño  | 
+--  +---------+-------------+--------+---------+
+--  | 2       | Cigarrillos | 45.89  | Mediano | 
+--  | 3       | Gaseosa     | 97.5   | Mediano | 
+--  | 4       | Chocolate   | 25.35  | Chico   | 
+--  +---------+-------------+--------+---------+
+
+--17. Eliminar a todos los proveedores que no han enviado productos.
+SELECT * FROM `proveedores`
+    DELETE 
+    FROM PROVEEDORES 
+    WHERE NUMERO IN
+        (select * from ( SELECT prov.Numero
+          FROM envios as env right join proveedores AS prov
+          ON env.Numero = prov.Numero 
+          GROUP BY prov.Numero
+          HAVING COALESCE(sum(env.Cantidad),0)=0
+        )as temp)   
+
+SELECT * FROM PROVEEDORES
+
+ +--------+---------+-----------+------------+
+ | Numero | Nombre  | Domicilio | Localidad  | 
+ +--------+---------+-----------+------------+
+ | 100    | Perez   | Peron 876 | Quilmes    | 
+ | 101    | Gimenez | Mitre 750 | Avellaneda | 
+ | 102    | Aguirre | Boedo 634 | Bernal     | 
+ +--------+---------+-----------+------------+
