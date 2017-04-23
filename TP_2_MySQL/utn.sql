@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `envios`
 --
 
+
 CREATE TABLE `envios` (
   `Numero` int(10) NOT NULL,
   `pNumero` int(10) NOT NULL,

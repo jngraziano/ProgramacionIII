@@ -22,7 +22,7 @@ else {
 }
 
 
-//guardamos en una variable la query
+//guardamos la query en una variable.
 $consultaTest="SELECT * FROM `productos`";
 echo "CONSULTA: ".$consultaTest."<br>";
 
