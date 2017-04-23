@@ -230,10 +230,10 @@ SELECT * FROM `proveedores`
 
 SELECT * FROM PROVEEDORES
 
- +--------+---------+-----------+------------+
- | Numero | Nombre  | Domicilio | Localidad  | 
- +--------+---------+-----------+------------+
- | 100    | Perez   | Peron 876 | Quilmes    | 
- | 101    | Gimenez | Mitre 750 | Avellaneda | 
- | 102    | Aguirre | Boedo 634 | Bernal     | 
- +--------+---------+-----------+------------+
+--  +--------+---------+-----------+------------+
+--  | Numero | Nombre  | Domicilio | Localidad  | 
+--  +--------+---------+-----------+------------+
+--  | 100    | Perez   | Peron 876 | Quilmes    | 
+--  | 101    | Gimenez | Mitre 750 | Avellaneda | 
+--  | 102    | Aguirre | Boedo 634 | Bernal     | 
+--  +--------+---------+-----------+------------+
