@@ -103,6 +103,7 @@ class Producto
 	}
 	public static function TraerTodosLosProductosBD()
 	{
+		//http://localhost:8080/ProgramacionIII/Clase06/# aca tenemos los distintos tipos de fetch
 		$arrayRetorno = array();
 		//Este Metodo esta creado por nosotros este.
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
@@ -114,9 +115,10 @@ class Producto
 		// var_dump($consulta);
 		//	var_dump($datos);
 		// var_dump($datos_2);
-		 while ($fila = $consulta->fetchObject("producto")) //devuelve true o false depende si encuentra o no el objeto
+		 while ($fila = $consulta->fetchObject("producto")) //devuelve true o false depende si encuentra o no el objeto. 
+		 //Sale cuando es false claramente.
 		 {//FETCHOBJECT -> RETORNA UN OBJETO DE UNA CALSE DADA
-            //    var_dump($fila);
+              // var_dump($fila);
 			 array_push($arrayRetorno,$fila);
 		 }
 		 
