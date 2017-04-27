@@ -73,18 +73,21 @@ class Vehiculo
 //--TOSTRING	
   	public function ToString()
 	{
-	  	return $this->codBarra." - ".$this->nombre." - ".$this->pathFoto."\r\n";
+	  	return $this->Marca." - ".$this->Modelo." - ".$this->Tipo." - ".$this->Año." - ".$this->precio."\r\n";
 	}
 //--------------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------------//
 //--METODOS DE CLASE
-	public static function Guardar($obj)
+	public static function GuardarenTxt($obj)
 	{
 		$resultado = FALSE;
-		
+		if(!file_exists("Archivos"))
+		{
+			mkdir("Archivos",0777);
+		}
 		//ABRO EL ARCHIVO
-		$ar = fopen("archivos/productos.txt", "a");
+		$ar = fopen("Archivos/vehiculos.txt", "a");
 		
 		//ESCRIBO EN EL ARCHIVO
 		$cant = fwrite($ar, $obj->ToString());
@@ -98,28 +101,34 @@ class Vehiculo
 		
 		return $resultado;
 	}
-	public static function TraerTodosLosProductos()
+	public static function TraerTodosLosProductosTxt()
 	{
 
 		$ListaDeProductosLeidos = array();
 
-		//leo todos los productos del archivo
-		$archivo=fopen("archivos/productos.txt", "r");
+		//leo todos los productos del archivo txt
+		$archivo=fopen("Archivos/vehiculos.txt", "r");
 		
 		while(!feof($archivo))
 		{
 			$archAux = fgets($archivo);
 			$productos = explode(" - ", $archAux);
 			//http://www.w3schools.com/php/func_string_explode.asp
-			$productos[0] = trim($productos[0]);
+			$vehiculo[0] = trim($vehiculo[0]);
 			if($productos[0] != ""){
-				$ListaDeProductosLeidos[] = new Producto($productos[0], $productos[1],$productos[2]);
+				$ListaDeProductosLeidos[] = new Vehiculo($vehiculo[0], $vehiculo[1],$vehiculo[2],$vehiculo[3],$vehiculo[4]);
 			}
 		}
 		fclose($archivo);
 		
 		return $ListaDeProductosLeidos;
 		
+	}
+	public static function GuardarenBD($obj)
+	{
+		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `rodados`(`pMarca`, `Modelo`, `Tipo`, `Año`, `Precio`) VALUES ($obj[0],$obj[1],$obj[2],$obj[3],$obj[4])');
+		$consulta->Execute();//Es para ejecutar la consulta.
 	}
 	public static function TraerTodosLosProductosBD()
 	{
@@ -135,7 +144,7 @@ class Vehiculo
 		// var_dump($consulta);
 		//	var_dump($datos);
 		// var_dump($datos_2);
-		 while ($fila = $consulta->fetchObject("producto")) //devuelve true o false depende si encuentra o no el objeto. 
+		 while ($fila = $consulta->fetchObject("Vehiculo")) //devuelve true o false depende si encuentra o no el objeto. 
 		 //Sale cuando es false claramente.
 		 {//FETCHOBJECT -> RETORNA UN OBJETO DE UNA CALSE DADA
               // var_dump($fila);
