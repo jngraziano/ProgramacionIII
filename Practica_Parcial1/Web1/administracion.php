@@ -5,9 +5,10 @@ $alta = isset($_POST["Aceptar1"]) ? TRUE : FALSE;
 
 if($alta) {
 
-		$nuevovehiculo= new vehiculo($_POST["Marca1"],$_POST["Modelo1"],$_POST["Tipo1"],$_POST["Año1"],$_POST["Precio1"])
-		vehiculo::GuardarenTxt($nuevovehiculo);
-		vehiculo::GuardarenBD($nuevovehiculo);
+		$nuevovehiculo= new Vehiculo($_POST["Marca1"],$_POST["Modelo1"],$_POST["Tipo1"],$_POST["Año1"],$_POST["Precio1"]);
+		Vehiculo::GuardarenTxt($nuevovehiculo);
+		Vehiculo::GuardarenBD($nuevovehiculo);
+		echo "Fue cargado el vehiculo";
 
 	}//if $alta
 

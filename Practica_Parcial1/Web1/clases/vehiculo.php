@@ -68,7 +68,7 @@ class Vehiculo
 			$this->Precio=$Precio;
 		}
 	}
-//ACA ME QUEDE 
+
 //--------------------------------------------------------------------------------//
 //--TOSTRING	
   	public function ToString()
