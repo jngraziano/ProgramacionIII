@@ -20,9 +20,9 @@
 		<div class="CajaInicio animated bounceInRight">
 			<h1>ALTA-LISTADO - con archivos -</h1>
 
-			<form id="FormIngreso" method="post" enctype="multipart/form-data" action="GuardarenBD.php" >
-				<input type="text" name="codBarra" placeholder="Ingrese c&oacute;digo de barras"  />
-				<input type="text" name="nombre" placeholder="Ingrese nombre"  />
+			<form id="FormIngreso" method="post" enctype="multipart/form-data" action="GuardarenBD.php" require >
+				<input type="text" name="codBarra" placeholder="Ingrese c&oacute;digo de barras" require />
+				<input type="text" name="nombre" placeholder="Ingrese nombre" require />
 				<input type="file" name="archivo" /> 
 
 				<input type="submit" class="MiBotonUTN" name="guardar" />

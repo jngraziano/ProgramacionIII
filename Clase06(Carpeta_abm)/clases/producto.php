@@ -1,6 +1,6 @@
 <?php
 //Incluimos la clase AccesoDatos.php que no estaba. La copiamos desde la Carpeta Clases de Clase06
-require "AccesoDatos.php";
+require_once "AccesoDatos.php";
 class Producto
 {
 //--------------------------------------------------------------------------------//
