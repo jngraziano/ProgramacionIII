@@ -2,7 +2,7 @@
 <?php
 require_once ("clases/AccesoDatos.php");
 
-if(isset($_POST["guardar"])) 
+:if(isset($_POST["guardar"])) 
 {
     $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
    
