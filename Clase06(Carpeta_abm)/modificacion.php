@@ -15,7 +15,7 @@
 			<h1>PRODUCTOS</h1>      
 		</div>
 		<div class="CajaInicio animated bounceInRight">
-			<h1>MODIFICACION -LISTADO - con archivos -</h1>
+			<h1>MODIFICACION - LISTADO - con archivos -</h1>
 
             <?PHP
                 require_once("clases\producto.php");
