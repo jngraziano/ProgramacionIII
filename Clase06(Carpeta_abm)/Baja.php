@@ -52,7 +52,7 @@ echo "<table class='table'>
 								<form method=post name=eliminar1  action=BorrarenBD.php>
 								<input type=submit name=botonEliminar1 class=MiBotonUTN value=Eliminar />
 								<input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
-								
+								</form>
                    
 					</td>
 				</tr>";

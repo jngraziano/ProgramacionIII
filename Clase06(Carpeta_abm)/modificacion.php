@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>MODIFICACION de PRODUCTOS</title>
-	  
+	 
 		<meta charset="UTF-8">
 
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -22,7 +22,7 @@
                 //Si entra por primera vez selecciona, sino modifica con placeholder con valores
                 if(isset($_POST["modificar"]))
                 {
-                    echo "	<form id=FormIngreso method=post enctype=multipart/form-data action=modificarenBD.php >
+                    echo "	<form id=FormIngreso method=post enctype=multipart/form-data action=modificaenBD.php >
 				            <input type=text name=codBarra placeholder='Codigo Actual:$codProducto'  />
                             <input type=hidden name=codAnterior value='$codProducto' />
                             <input type=text name=nombre placeholder='Nombre Actual:$nombreProducto'  />
@@ -58,6 +58,17 @@
                                 <td>".$prod->GetCodBarra()."</td>
                                 <td>".$prod->GetNombre()."</td>
                                 <td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
+                                 <td>
+                                <form method=post name=modificarProducto action= modificacion.php>
+                                <input type=submit name=botonModificacion class=MiBotonUTN value=Modificar />
+                                <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
+								</form>
+								<form method=post name=eliminar1  action=BorrarenBD.php>
+								<input type=submit name=botonEliminar1 class=MiBotonUTN value=Eliminar />
+								<input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
+								</form>
+                   
+				        	</td>
                             </tr>";
                 }	
             echo "</table>";		

@@ -7,7 +7,7 @@
     $consulta->bindvalue(':nombre',$_POST["nombre"], PDO::PARAM_STR);
     $consulta->bindvalue(':pathFoto',$_FILES["archivo"]["name"], PDO::PARAM_STR);
     $consulta->execute();
-    echo "Se actualizo ". $consulta->rowCount() . "registro/s";
+    echo "Se actualizo ". $consulta->rowCount() . "registro/s"."<br>";
     
     echo "<a href=modificacion.php> Volver </a>";
 ?>
