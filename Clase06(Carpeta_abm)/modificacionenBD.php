@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
 <body>
-	<a class="btn btn-info" href="index.html">Menu principal</a>
+	<a class="btn btn-info" href="indexBD.html">Menu principal</a>
 	<div class="container">
 	
 		<div class="page-header">
@@ -41,7 +41,7 @@
                 {   
                     echo "	<form id=FormIngreso method=post enctype=multipart/form-data action=seleccionarenBD.php >
 				            <input type=text name=codBarra placeholder='Ingrese codBarra del prod. a modificar'  />
-				            <input type=submit class=MiBotonUTN name=modificar value=Seleccionar/>
+				            <input type=submit class=MiBotonUTN name=modificar value=Modificar>
 			                </form>";
                 }
             $ArrayDeProductos = Producto::TraerTodosLosProductosBD(); //MODIFIQUE ESTE POR BD AGREGADO AL FINAL LLAMANDO AL NUEVO METODO
@@ -60,7 +60,7 @@
                                 <td>".$prod->GetNombre()."</td>
                                 <td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
                                  <td>
-                                <form method=post name=modificarProducto action= modificacion.php>
+                                <form method=post name=modificarProducto action= modificacionenBD.php>
                                 <input type=submit name=botonModificacion class=MiBotonUTN value=Modificar />
                                 <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
 								</form>

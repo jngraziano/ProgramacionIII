@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
 <body>
-	<a class="btn btn-info" href="index.html">Menu principal</a>
+	<a class="btn btn-info" href="indexBD.html">Menu principal</a>
 <?php     
 	require_once("clases\producto.php");
 ?>

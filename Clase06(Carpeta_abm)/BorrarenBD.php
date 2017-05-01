@@ -17,7 +17,7 @@ try
             echo '<script type="text/javascript">alert("Se elimino 1 articulo");</script>';
         }
    
-        require_once("grilla.php");
+        require_once("grillaenBD.php");
     }
     else {
         $consulta->bindvalue(':id',$_POST["codBarra"], PDO::PARAM_INT);
@@ -30,7 +30,7 @@ try
             {
                 echo "Se elimino: ". $consulta->rowCount()." Objeto/s.<br>"."<br>";
             }
-         require_once("baja.php");
+         require_once("bajaenBD.php");
         }
         
     
@@ -39,5 +39,5 @@ try
 catch (PDOException $e)
     {
         echo $e->getMessage();
-        require "baja.php";
+        require "bajaenBD.php";
     }

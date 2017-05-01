@@ -10,5 +10,5 @@
     $codProducto = $productoSeleccionado->GetCodBarra();
     $pathFotoProducto = $productoSeleccionado->GetPathFoto();
     
-    require_once "modificacion.php";
+    require_once "modificacionenBD.php";
 ?>

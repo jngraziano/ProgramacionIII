@@ -3,7 +3,7 @@
 ?>
 <html>
 <head>
-	<title>Ejemplo de ALTA-LISTADO - con archivos -</title>
+	<title>GRILLA en DB</title>
 
 	<meta charset="UTF-8">
 		
@@ -12,11 +12,11 @@
 
 </head>
 <body>
-	<a class="btn btn-info" href="index.html">Menu principal</a>
+	<a class="btn btn-info" href="indexBD.html">Menu principal</a>
 
 	<div class="container">
 		<div class="page-header">
-			<h1>Ejemplos de Grilla</h1>      
+			<h1>GRILLA de Productos en BaseDatos</h1>      
 		</div>
 		<div class="CajaInicio animated bounceInRight">
 			<h1>Listado de PRODUCTOS</h1>

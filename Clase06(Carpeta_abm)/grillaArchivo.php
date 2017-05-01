@@ -1,34 +1,28 @@
+<?php
+	require_once('clases/producto.php');
+?>
 <html>
 <head>
-	<title>BAJA de PRODUCTOS</title>
-	  
-		<meta charset="UTF-8">
+	<title>GRILLA en Archivo</title>
 
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="estilo.css">
+	<meta charset="UTF-8">
+		
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+
 </head>
 <body>
-	<a class="btn btn-info" href="index.html">Menu principal</a>
-<?php     
-	require_once("clases\producto.php");
-?>
+	<a class="btn btn-info" href="indexArchivo.html">Menu principal</a>
+
 	<div class="container">
-	
 		<div class="page-header">
-			<h1>PRODUCTOS</h1>      
+			<h1>GRILLA de Productos en Archivo</h1>      
 		</div>
 		<div class="CajaInicio animated bounceInRight">
-			<h1>BAJA-LISTADO</h1>
+			<h1>Listado de PRODUCTOS</h1>
 
-			<form id="FormIngreso" method="post" enctype="multipart/form-data" action="BorrarenBD.php" require >
-				<input type="text" name="codBarra" placeholder="Ingrese c&oacute;digo de barras" require />
-
-				<input type="submit" class="MiBotonUTN" name="borrar1" />
-			</form>
-            <?php 
-
-$ArrayDeProductos = Producto::TraerTodosLosProductosBD();
-
+<?php 
+$ArrayDeProductos = Producto::TraerTodosLosProductos(); //MODIFIQUE ESTE POR BD AGREGADO AL FINAL LLAMANDO AL NUEVO METODO
 echo "<table class='table'>
 		<thead>
 			<tr>
@@ -38,9 +32,7 @@ echo "<table class='table'>
 				<th>  ACCION     </th>
 			</tr> 
 		</thead>";   	
-
 	foreach ($ArrayDeProductos as $prod){
-
 		echo " 	<tr>
 					<td>".$prod->GetCodBarra()."</td>
 					<td>".$prod->GetNombre()."</td>
@@ -58,10 +50,8 @@ echo "<table class='table'>
 					</td>
 				</tr>";
 	}	
-echo "</table>";
-	
+echo "</table>";		
 ?>
-		
 		</div>
 	</div>
 </body>
