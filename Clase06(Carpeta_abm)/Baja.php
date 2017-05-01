@@ -35,6 +35,7 @@ echo "<table class='table'>
 				<th>  COD. BARRA </th>
 				<th>  NOMBRE     </th>
 				<th>  FOTO       </th>
+				<th>  ACCION     </th>
 			</tr> 
 		</thead>";   	
 

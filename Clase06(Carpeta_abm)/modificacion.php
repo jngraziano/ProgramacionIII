@@ -51,6 +51,7 @@
                             <th>  COD. BARRA </th>
                             <th>  NOMBRE     </th>
                             <th>  FOTO       </th>
+                            <th>  ACCION     </th>
                         </tr> 
                     </thead>";   	
                 foreach ($ArrayDeProductos as $prod){

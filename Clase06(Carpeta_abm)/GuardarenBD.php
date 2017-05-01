@@ -18,9 +18,9 @@ if(isset($_POST["guardar"]))
      $name = $_FILES["archivo"]["name"];
         $archivoTmp = $_FILES["archivo"]["tmp_name"];
         copy($archivoTmp,"archivos"."/".$name);
+         echo '<script type="text/javascript">alert("Se agrego 1 articulo");</script>';
               
-    echo "El archivo fue cargado exitosamente.<br>";
-    echo "<a href=index.html>Volver a la pagina principal</a>";
+    require_once("alta.php");
         }
     catch(PDOException $e)
     {
