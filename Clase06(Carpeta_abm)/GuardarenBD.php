@@ -2,7 +2,7 @@
 <?php
 require_once ("clases/AccesoDatos.php");
 
-:if(isset($_POST["guardar"])) 
+if(isset($_POST["guardar"])) 
 {
     $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
    
@@ -15,6 +15,10 @@ require_once ("clases/AccesoDatos.php");
         $consulta->bindValue(':path',$_FILES["archivo"]["name"], PDO::PARAM_STR);
 
 	$consulta->Execute();
+     $name = $_FILES["archivo"]["name"];
+        $archivoTmp = $_FILES["archivo"]["tmp_name"];
+        copy($archivoTmp,"archivos"."/".$name);
+              
     echo "El archivo fue cargado exitosamente.<br>";
     echo "<a href=index.html>Volver a la pagina principal</a>";
         }

@@ -29,6 +29,7 @@
 				            <input type=submit class=MiBotonUTN name=modificar value=Modificar Valores/>
 			                </form>";
                 }
+                
                 else 
                 {   
                     echo "	<form id=FormIngreso method=post enctype=multipart/form-data action=seleccionarenBD.php >

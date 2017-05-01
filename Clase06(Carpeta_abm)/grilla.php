@@ -22,29 +22,35 @@
 			<h1>Listado de PRODUCTOS</h1>
 
 <?php 
-
-$ArrayDeProductos = Producto::TraerTodosLosProductosBD();
-//Antes aca estaba puesto el metodo TraerTodosLosProductos de producto.
-
+$ArrayDeProductos = Producto::TraerTodosLosProductosBD(); //MODIFIQUE ESTE POR BD AGREGADO AL FINAL LLAMANDO AL NUEVO METODO
 echo "<table class='table'>
 		<thead>
 			<tr>
 				<th>  COD. BARRA </th>
 				<th>  NOMBRE     </th>
 				<th>  FOTO       </th>
+				<th>  ACCION     </th>
 			</tr> 
 		</thead>";   	
-
 	foreach ($ArrayDeProductos as $prod){
-
 		echo " 	<tr>
 					<td>".$prod->GetCodBarra()."</td>
 					<td>".$prod->GetNombre()."</td>
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
+					   <td>
+                                <form method=post name=modificarProducto action= modificacion.php>
+                                <input type=submit name=botonModificacion class=MiBotonUTN value=Modificar />
+                                <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
+								</form>
+								<form method=post name=eliminar1 
+								<input type=submit name=botonEliminar1 class=MiBotonUTN value=Eliminar />
+
+								
+                   
+					</td>
 				</tr>";
 	}	
-echo "</table>";
-	
+echo "</table>";		
 ?>
 		</div>
 	</div>
