@@ -38,7 +38,7 @@
                     fwrite($archivoProductos, $producto->ToString());
                    echo '<script type="text/javascript">alert("Se agrego 1 articulo");</script>';
     //meta sirve para refrescar la pagina directamente a donde vos quieras
-    echo '<meta http-equiv="refresh" content="0; url=http://localhost/ProgramacionIII/Clase06(Carpeta_abm)/altaenArchivo.php" />';
+    echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Clase06(Carpeta_abm)/altaenArchivo.php" />';
                 }
             else 
                 {
@@ -46,7 +46,7 @@
                     fwrite($archivoProductos, $producto->ToString());
                     echo '<script type="text/javascript">alert("Se agrego 1 articulo");</script>';
     //meta sirve para refrescar la pagina directamente a donde vos quieras
-    echo '<meta http-equiv="refresh" content="0; url=http://localhost/ProgramacionIII/Clase06(Carpeta_abm)/altaenArchivo.php" />';
+    echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Clase06(Carpeta_abm)/altaenArchivo.php" />';
                 }
             //Muevo el archivo
             $name = $_FILES["archivo"]["name"];

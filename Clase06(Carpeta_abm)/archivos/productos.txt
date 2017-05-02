@@ -1,3 +1,4 @@
-777 - bananaarchivo - banana.jpg
-999 - manzanaarchivo - manzana.jpg
-444 - kiwienarchivo - kiwi.jpg
+666 - manzanaarchivo - manzana.jpg
+
+111 - peraarchivo - pera.jpg
+

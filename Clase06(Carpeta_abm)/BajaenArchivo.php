@@ -27,7 +27,7 @@
 				<input type="submit" class="MiBotonUTN" name="borrararchivo" />
 			</form>
             <?php 
-
+			
 //Creo el array para archivos
 $ArrayDeProductos = Producto::TraerTodosLosProductos();
 
@@ -49,7 +49,7 @@ echo "<table class='table'>
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
 					   <td>
                                 <form method=post name=modificarProducto action= modificacionenArchivo.php>
-                                <input type=submit name=botonModificacion class=MiBotonUTN value=Modificar />
+                                <input type=submit name=botonModificacionArchivo class=MiBotonUTN value=Modificar />
                                 <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
 								</form>
 								<form method=post name=eliminar1  action=borrarenArchivo.php>
