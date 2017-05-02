@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Login</title>
+	  
+		<meta charset="UTF-8">
+
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+<body>
+	<div class="container">
+	 <a class="btn btn-info" href="index.html">Menu principal</a>
+		<div class="page-header">
+			<h1>Usuario</h1>      
+		</div>
+		<div class="CajaInicio animated bounceInRight">
+			<h1></h1>
+
+			<!--GuardarenARCHIVO enctype="multipart/form-data" -->
+			    <form id="FormIngreso" method="post"  action="UsuarioCarga.php" > 
+				<input type="text" name="nombre1" placeholder="Ingrese nombre"required  />
+                <input type="text" name="correo1" placeholder="Ingrese mail" required  />
+                <br>
+                <input type="text" name="edad1" placeholder="Ingrese edad" required  />
+				<input type="text" name="clave1" placeholder="Ingrese clave"  />
+				<!--<input type="file" name="archivo" /> -->
+                <br><br>
+				<input type="submit" class="MiBotonUTN" name="guardar" value="Guardar"/>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
