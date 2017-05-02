@@ -38,12 +38,12 @@ echo "<table class='table'>
 					<td>".$prod->GetNombre()."</td>
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
 					   <td>
-                                <form method=post name=modificarProducto action= modificacion.php>
-                                <input type=submit name=botonModificacion class=MiBotonUTN value=Modificar />
+                                <form method=post name=modificarProducto action= modificaenArchivo.php>
+                                <input type=submit name=botonModificacionA class=MiBotonUTN value=Modificar />
                                 <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
 								</form>
-								<form method=post name=eliminar1  action=BorrarenBD.php>
-								<input type=submit name=botonEliminar1 class=MiBotonUTN value=Eliminar />
+								<form method=post name=eliminar1  action=borrarenArchivo.php>
+								<input type=submit name=botonEliminarA class=MiBotonUTN value=Eliminar />
 								<input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
 								</form>
                    

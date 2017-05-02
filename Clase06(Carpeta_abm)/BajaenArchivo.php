@@ -29,8 +29,7 @@
             <?php 
 			
 //Creo el array para archivos
-$ArrayDeProductos = Producto::TraerTodosLosProductos();
-
+$ArrayDeProductos = Producto::TraerTodosLosProductos(); //MODIFIQUE ESTE POR BD AGREGADO AL FINAL LLAMANDO AL NUEVO METODO
 echo "<table class='table'>
 		<thead>
 			<tr>
@@ -40,20 +39,18 @@ echo "<table class='table'>
 				<th>  ACCION     </th>
 			</tr> 
 		</thead>";   	
-
 	foreach ($ArrayDeProductos as $prod){
-
 		echo " 	<tr>
 					<td>".$prod->GetCodBarra()."</td>
 					<td>".$prod->GetNombre()."</td>
 					<td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
 					   <td>
                                 <form method=post name=modificarProducto action= modificacionenArchivo.php>
-                                <input type=submit name=botonModificacionArchivo class=MiBotonUTN value=Modificar />
+                                <input type=submit name=botonModificacionA class=MiBotonUTN value=Modificar />
                                 <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
 								</form>
 								<form method=post name=eliminar1  action=borrarenArchivo.php>
-								<input type=submit name=botonEliminarArchivo class=MiBotonUTN value=Eliminar />
+								<input type=submit name=botonEliminarA class=MiBotonUTN value=Eliminar />
 								<input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
 								</form>
                    
