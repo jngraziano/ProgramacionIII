@@ -41,7 +41,7 @@ echo "<table class='table'>
                                 
 								<form method=post name=eliminar1  action=BorrarenBD.php>
 								<input type=submit name=botonEliminar1 class=MiBotonUTN value=Eliminar />
-								<input type=hidden name=codBarra value=".$contei->GetNumero()." />
+								<input type=hidden name=numero1 value=".$contei->GetNumero()." />
 								</form>
                    
 					</td>
