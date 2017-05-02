@@ -10,7 +10,7 @@
         // $codComp = $prod["codBarra"];
         if($_POST["codBarra"] == $prod->GetCodBarra())
         {
-            echo $i;
+            //echo $i;
             break;
         }   
         $i++;

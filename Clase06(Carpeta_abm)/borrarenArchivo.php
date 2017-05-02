@@ -18,6 +18,7 @@ try
 
             if($_POST["codBarra"] == $prod->GetCodBarra())
             {
+                //CREO FLAG POR SI LO ENCONTRO
             $loencontro=true;
             break;
             }
