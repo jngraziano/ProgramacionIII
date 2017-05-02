@@ -1,3 +1,6 @@
+<?php     
+	require_once("clases\producto.php");
+?>
 <html>
 <head>
 	<title>BAJA de PRODUCTOS</title>
@@ -9,9 +12,7 @@
 </head>
 <body>
 	<a class="btn btn-info" href="indexArchivo.html">Menu principal</a>
-<?php     
-	require_once("clases\producto.php");
-?>
+
 	<div class="container">
 	
 		<div class="page-header">
@@ -23,10 +24,11 @@
 			<form id="FormIngreso" method="post" enctype="multipart/form-data" action="borrarenArchivo.php" require >
 				<input type="text" name="codBarra" placeholder="Ingrese c&oacute;digo de barras" require />
 
-				<input type="submit" class="MiBotonUTN" name="borrar1" />
+				<input type="submit" class="MiBotonUTN" name="borrararchivo" />
 			</form>
             <?php 
 
+//Creo el array para archivos
 $ArrayDeProductos = Producto::TraerTodosLosProductos();
 
 echo "<table class='table'>
@@ -51,7 +53,7 @@ echo "<table class='table'>
                                 <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
 								</form>
 								<form method=post name=eliminar1  action=borrarenArchivo.php>
-								<input type=submit name=botonEliminar1 class=MiBotonUTN value=Eliminar />
+								<input type=submit name=botonEliminarArchivo class=MiBotonUTN value=Eliminar />
 								<input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
 								</form>
                    

@@ -1,6 +1,3 @@
 777 - bananaarchivo - banana.jpg
-
-124145 - perro - kiwi.jpg
-
-9999 - qwe - Pera.jpg
-
+999 - manzanaarchivo - manzana.jpg
+444 - kiwienarchivo - kiwi.jpg

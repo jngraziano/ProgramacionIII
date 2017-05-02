@@ -1,0 +1,30 @@
+//Parcial
+ABM
+Alta Listado y Baja como minimo
+Estructuras
+Clases
+Metodos
+Boton de borrar, refiriendome al id
+Borrar el elemento y se dispara actualizacion automatico
++Puntaje 
+    Modificar
+        Quien Modificar
+        Mostrar datos anteriores
+        Que modificar 
+Practicar ABM en archivo
+Dsp pasar a base de datos
+
+//MySQL
+Configurar el SQL de tuars.
+Minimo elemento de la base de datos --> Tabla
+
+//OTRO TEMA, PHP
+BASE, SERVIDOR, USUARIO Y PASSWORD
+2 formas de conectarse
+    TRADICIONAL
+    PDO
+        Ejemplo en Github EJEMPLO PDO VERLOS
+
+Clase que viene ALTA BAJA MODIFICACION EN ARCHIVO Y BD PARA Parcial
+CLASE QUE VIENE PDO Y DUDAS 
+    

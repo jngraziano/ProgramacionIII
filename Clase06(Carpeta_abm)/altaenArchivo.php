@@ -18,7 +18,7 @@
 			<h1>PRODUCTOS</h1>      
 		</div>
 		<div class="CajaInicio animated bounceInRight">
-			<h1>ALTA-LISTADO - con archivos -</h1>
+			<h1>ALTA-LISTADO - con archivos</h1>
 
 			<!--GuardarenARCHIVO-->
 			<form id="FormIngreso" method="post" enctype="multipart/form-data" action="guardarARCHIVO.php" >
