@@ -12,7 +12,8 @@
 
 </head>
 <body>
-	<a class="btn btn-info" href="indexBD.html">Menu principal</a>
+	<a class="btn btn-info" href="indexBD.html">Menu DB</a>
+    <a class="btn btn-info" href="index.html">Menu Principal</a>
 
 	<div class="container">
 		<div class="page-header">

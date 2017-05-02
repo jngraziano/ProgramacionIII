@@ -8,7 +8,8 @@
         <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
 <body>
-	<a class="btn btn-info" href="indexArchivo.html">Menu principal</a>
+	<a class="btn btn-info" href="indexArchivo.html">Menu Archivos</a>
+	<a class="btn btn-info"  href="index.html">Menu Principal</a>
 	<div class="container">
 	
 		<div class="page-header">
