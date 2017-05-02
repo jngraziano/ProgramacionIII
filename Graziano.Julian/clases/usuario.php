@@ -1,5 +1,5 @@
 <?php
-//Incluimos la clase AccesoDatos.php que no estaba. La copiamos desde la Carpeta Clases de Clase06
+
 require_once "AccesoDatos.php";
 class Usuario
 {
@@ -73,17 +73,16 @@ class Usuario
 	{
 		$resultado = FALSE;
 		
-		//ABRO EL ARCHIVO
-		$ar = fopen("archivos/usuario.txt", "a");
 		
-		//ESCRIBO EN EL ARCHIVO
+		$ar = fopen("archivos/usuario.txt", "a");
+	
 		$cant = fwrite($ar, $obj->ToString());
 		
 		if($cant > 0)
 		{
 			$resultado = TRUE;			
 		}
-		//CIERRO EL ARCHIVO
+		
 		fclose($ar);
 		
 		return $resultado;
@@ -93,7 +92,7 @@ class Usuario
 
 		$ListaDeProductosLeidos = array();
 
-		//leo todos los productos del archivo
+		
 		$archivo=fopen("archivos/usuarios.txt", "r");
 		
 		while(!feof($archivo))
@@ -111,30 +110,6 @@ class Usuario
 		
 	}
 
-	//FALTA MODIFICAR PARA BD ESTO
-	public static function TraerTodosLosProductosBD()
-	{
-		//http://localhost:8080/ProgramacionIII/Clase06/# aca tenemos los distintos tipos de fetch
-		$arrayRetorno = array();
-		//Este Metodo esta creado por nosotros este.
-		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('SELECT codigo_barra as codBarra, nombre, path_foto as pathFoto FROM `producto`');
-		$consulta->Execute();//Es para ejecutar la consulta.
-		// $datos =$consulta->fetchall();
-		// $datos_2 = $consulta->fetch(PDO::FETCH_LAZY);
-		// $datos_3 = $consulta -> fetchObject("producto");
-		// var_dump($consulta);
-		//	var_dump($datos);
-		// var_dump($datos_2);
-		 while ($fila = $consulta->fetchObject("producto")) //devuelve true o false depende si encuentra o no el objeto. 
-		 //Sale cuando es false claramente.
-		 {//FETCHOBJECT -> RETORNA UN OBJETO DE UNA CALSE DADA
-              // var_dump($fila);
-			 array_push($arrayRetorno,$fila);
-		 }
-		 
-		 return $arrayRetorno;
-		// var_dump($datos_3);
-	}
+	
 //--------------------------------------------------------------------------------//
 }
