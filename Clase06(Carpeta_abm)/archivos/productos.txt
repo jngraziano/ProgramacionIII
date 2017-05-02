@@ -1,2 +1,3 @@
-999 - manzanaarchivo - manzana.jpg
-19199 - bananaarchivo - banana.jpg
+2 - Manzana - manzana.jpg
+
+1 - pera - pera.jpg

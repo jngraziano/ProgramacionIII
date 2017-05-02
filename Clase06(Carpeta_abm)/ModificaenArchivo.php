@@ -41,5 +41,6 @@
     //       {
     //         echo "Archivo no permitido";
     //       }
-    echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Clase06(Carpeta_abm)/modificacionenArchivo.php" />'
+    echo '<script type="text/javascript">alert("Se actualizo 1 articulo");</script>';
+    echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Clase06(Carpeta_abm)/modificacionenArchivo.php" />';
 ?>

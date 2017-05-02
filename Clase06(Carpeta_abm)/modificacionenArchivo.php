@@ -20,7 +20,7 @@
             <?PHP
                 require_once("clases\producto.php");
                 //Si entra por primera vez selecciona, sino modifica con placeholder con valores
-                if(isset($_POST["modificaenArchivo"]) && $existeProducto==1 )
+                if(isset($_POST["modificar"]) && $existeProducto==1 )
                 {
                     echo "	<form id=FormIngreso method=post enctype=multipart/form-data action=ModificaenArchivo.php >
 				            <input type=text name=codBarra placeholder='Codigo Actual:$codProducto'  />
@@ -42,7 +42,7 @@
                 {   
                     echo "	<form id=FormIngreso method=post enctype=multipart/form-data action=seleccionarenARCHIVO.php >
 				            <input type=text name=codBarra placeholder='Ingrese codBarra del prod. a modificar'  />
-				            <input type=submit class=MiBotonUTN name=modificar value=Seleccionar>
+				            <input type=submit class=MiBotonUTN name=modificar value=Modificar>
 			                </form>";
                 }
             $ArrayDeProductos = Producto::TraerTodosLosProductos(); //MODIFIQUE ESTE POR BD AGREGADO AL FINAL LLAMANDO AL NUEVO METODO
@@ -59,8 +59,8 @@
                                 <td>".$prod->GetCodBarra()."</td>
                                 <td>".$prod->GetNombre()."</td>
                                 <td><img src='archivos/".$prod->GetPathFoto()."' width='100px' height='100px'/></td>
-                                <td>
-                                <form method=post name=modificarProducto action= modificaenArchivo.php>
+                               <td>
+                                <form method=post name=modificarProducto action= modificacionenArchivo.php>
                                 <input type=submit name=botonModificacionA class=MiBotonUTN value=Modificar />
                                 <input type=hidden name=codBarra value=".$prod->GetCodBarra()." />
 								</form>
