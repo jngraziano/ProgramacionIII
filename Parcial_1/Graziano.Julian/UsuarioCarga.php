@@ -11,7 +11,7 @@
                     fwrite($archivoUsuarios, $usuario->ToString());
                    echo '<script type="text/javascript">alert("Se agrego 1 articulo");</script>';
     
-                echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Clase06(Carpeta_abm)/altaenArchivo.php" />';
+                echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Parcial_1/Graziano.Julian/CrearArchivo.html" />';
                 }
             else 
                 {
@@ -19,11 +19,11 @@
                     fwrite($archivoUsuarios, $usuario->ToString());
                     echo '<script type="text/javascript">alert("Se agrego 1 articulo");</script>';
     
-    echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Graziano.Julian/CrearArchivo.html" />';
+    echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Parcial_1/Graziano.Julian/CrearArchivo.html" />';
                 }
            
-            $name = $_FILES["archivo"]["name"];
-            $archivoTmp = $_FILES["archivo"]["tmp_name"];
-            copy($archivoTmp,"archivos"."/".$name);
+            // $name = $_FILES["archivo"]["name"];
+            // $archivoTmp = $_FILES["archivo"]["tmp_name"];
+            // copy($archivoTmp,"archivos"."/".$name);
         
 ?>

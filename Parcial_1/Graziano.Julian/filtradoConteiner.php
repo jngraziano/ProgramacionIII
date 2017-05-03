@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 
 </head>
-<body>
+<body style="background-color:cadetblue;">
     <a class="btn btn-info" href="index.html">Menu Principal</a>
 
 	<div class="container">
@@ -26,6 +26,7 @@
 echo "<table class='table'>
 		<thead>
 			<tr>
+				<th>  NUMERO      </th>
 				<th>  DESCRIPCION </th>
 				<th>  PAIS     </th>
 				<th>  FOTO       </th>
@@ -34,6 +35,7 @@ echo "<table class='table'>
 		</thead>";   	
 	foreach ($ArrayDeProductos as $contei){
 		echo " 	<tr>
+					<td>".$contei->GetNumero()."</td>
 					<td>".$contei->GetDescripcion()."</td>
 					<td>".$contei->GetPais()."</td>
 					<td><img src='archivos/".$contei->GetFoto()."' width='100px' height='100px'/></td>

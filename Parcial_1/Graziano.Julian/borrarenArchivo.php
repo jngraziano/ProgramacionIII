@@ -39,7 +39,7 @@ try
         {
             //creo el mensaje y la redireccion si encontró el archivo
         echo '<script type="text/javascript">alert("Se borro 1 usuario");</script>';
-        echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Graziano.Julian/Listado.php" />';
+        echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Parcial_1/Graziano.Julian/Listado.php" />';
         }
         // else {
         //        //creo lo contrario al if

@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="estilo.css">
 
 </head>
-<body>
+<body style="background-color:cadetblue;">
 	<a class="btn btn-info"  href="index.html">Menu Principal</a>
 
 	<div class="container">

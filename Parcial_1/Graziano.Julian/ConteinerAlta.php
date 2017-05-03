@@ -20,7 +20,7 @@ if(isset($_POST["guardarBD"]))
         $archivoTmp = $_FILES["archivo"]["tmp_name"];
         copy($archivoTmp,"archivos"."/".$name);
          echo '<script type="text/javascript">alert("Se agrego 1 container");</script>';
-         echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Graziano.Julian/filtradoConteiner.php" />';  
+         echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Parcial_1/Graziano.Julian/filtradoConteiner.php" />';  
         }
     catch(PDOException $e)
     {

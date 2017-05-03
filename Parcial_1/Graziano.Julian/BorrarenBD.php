@@ -17,7 +17,7 @@ try
             echo '<script type="text/javascript">alert("Se elimino 1 articulo");</script>';
         }
    
-         echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Graziano.Julian/filtradoConteiner.php" />';  
+         echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Parcial_1/Graziano.Julian/filtradoConteiner.php" />';  
     }
     else {
         $consulta->bindvalue(':id',$_POST["numero1"], PDO::PARAM_INT);
@@ -30,7 +30,7 @@ try
             {
                 echo "Se elimino: ". $consulta->rowCount()." Objeto/s.<br>"."<br>";
             }
-          echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Graziano.Julian/filtradoConteiner.php" />';  
+          echo '<meta http-equiv="refresh" content="0; url=http://localhost:8080/ProgramacionIII/Parcial_1/Graziano.Julian/filtradoConteiner.php" />';  
         }
         
     
