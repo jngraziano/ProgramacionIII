@@ -1,0 +1,21 @@
+-Se utiliza api.php para que se comunique con archivos php y charle con otro host
+(api rest)
+Ejemplo: https://restcountries.eu/rest/v1/all
+
+-se utiliza bower para bajar codigo de github. el parecido compouser
+https://getcomposer.org/doc/00-intro.md
+
+-vamos a usar slim framwork
+https://www.slimframework.com/
+
+-postman
+extencion del chrome
+https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop
+
+
+
+Como instalar composer
+bajamos y lo instalamos. 
+Creamos una carpeta en htdocs
+click derecho + shift abrir comandos y despues copiar
+composer require slim/slim "^3.0"
