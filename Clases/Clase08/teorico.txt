@@ -3,8 +3,8 @@
 Ejemplo: https://restcountries.eu/rest/v1/all
 
 
--vamos a usar slim framwork
-https://www.slimframework.com/
+-Para instalar slim framwork
+https://www.slimframework.com/docs/start/installation.html
 
 -postman
 extencion del chrome
