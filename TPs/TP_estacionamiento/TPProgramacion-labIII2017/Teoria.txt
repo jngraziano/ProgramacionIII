@@ -1,0 +1,84 @@
+-DATOS ESTATICOS -
+
+*PISOS*
+ID PISO
+PISO 1
+PISO 2
+PISO 3
+
+*EMPLEADOS*
+ID EMPLEADO (Autonumerico incremental)
+TURNO (MAÑANA/TARDE/NOCHE)
+JORNADA (consultar con profesor ya que se pude hacer una query y listo)
+OPERACIONES (cantidad)
+
+*TARIFA*
+1 hs  - Hora          - $10
+12 hs - Media estadia - $90
+24 hs - Estadia       - $170
+
+*COCHERA* 
+ID NUMERO
+RESERVADA (SI / NO) (3 - discapacitados/embarazadas)
+TIEMPO_USO
+ESTADO (ocupada / sin usar)
+
+*VEHICULO*
+PATENTE (SE BUSCA POR PATENTE)
+COLOR 
+MARCA
+(estos datos se piden al entrar )
+
+
+
+-DATOS DINAMICOS-
+
+-TRANSACCIONAL-
+
+-TABLA DE OPERACIONES VEHICULO-
+*TABLA_OP_VEHICULO*
+ID OPERACION (Autonumerico incremental)
+VALOR (Trabaja con tabla *TARIFA*)
+ENTRADA_TIME
+SALIDA_TIME
+
+-TABLA DE LOGEOS EMPLEADOS-
+*TABLA_LOG_EMPLEADOS*
+ID EMPLEADO
+DATE
+LOGIN_TIME
+LOGOUT_TIME
+
+
+
+
+
+
+-SOLICITUD-
+
+
+-Administrador del Sistema-
+-VER DE UNA FECHA EN PARTICULAR o LAPSO DE TIEMPO-
+
+-VEHICULO
+        -ABM
+        -Entrada de VEHICULO -> Toma datos: PATENTE
+                                            COLOR
+                                            MARCA
+        -Salida de VEHICULO -> Se ingresa PATENTE
+                               Se muestra datos VEHICULO
+                               Se muestra IMPORTE
+        -DENTRO DE LOS COCHES ESTACIONADOS
+                            -*COCHERA*->*ID NUMERO*
+
+-EMPLEADOS
+        -Ver JORNADA
+        -ABM
+        -Suspenderlos
+        -Cantidad de operaciones por cada uno.
+
+-COCHERA
+        -ABM
+        -ver mayor TIEMPO_USO
+        -ver menor TIEMPO_USO
+        -ver ESTADO (sin usar)
