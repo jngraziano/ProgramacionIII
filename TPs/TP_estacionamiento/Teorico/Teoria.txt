@@ -1,33 +1,38 @@
 -DATOS ESTATICOS -
+BD -> *tp_estacionamiento*
+    *ESTACIONAMIENTO*
+    ID_PISO 
+    ID_ESTACIONAMIENTO (Autonumerico incremental)
+    CANT_COCHERAS
 
-*PISOS*
-ID PISO
-PISO 1
-PISO 2
-PISO 3
+*PISO*
+ID PISO (Autonumerico incremental)
+ID COCHERA
+LUGAR DISPONIBLE (SI/NO)
 
-*EMPLEADOS*
+*EMPLEADO*
 ID EMPLEADO (Autonumerico incremental)
+NOMBRE
 TURNO (MAÑANA/TARDE/NOCHE)
-JORNADA (consultar con profesor ya que se pude hacer una query y listo)
-OPERACIONES (cantidad)
 
 *TARIFA*
-1 hs  - Hora          - $10
-12 hs - Media estadia - $90
-24 hs - Estadia       - $170
+ID TARIFA
+TIPO (HORA / MEDIA_ESTADIA / ESTADIA)
+IMPORTE (10 / 90 / 170)
+
 
 *COCHERA* 
-ID NUMERO
-RESERVADA (SI / NO) (3 - discapacitados/embarazadas)
-TIEMPO_USO
-ESTADO (ocupada / sin usar)
+ID COCHERA
+NRO COCHERA (nombre numerico para la cochera)
+RESERVADA (SI / NO)
+TIPO (RESERVADA / NORMAL) (MINIMO 3 RESERVADAS POR PISO)
+ESTADO (OCUPADA /LIBRE)
 
 *VEHICULO*
+ID VEHICULO
 PATENTE (SE BUSCA POR PATENTE)
 COLOR 
 MARCA
-(estos datos se piden al entrar )
 
 
 
@@ -36,18 +41,35 @@ MARCA
 -TRANSACCIONAL-
 
 -TABLA DE OPERACIONES VEHICULO-
-*TABLA_OP_VEHICULO*
+*OP_VEHICULO*
 ID OPERACION (Autonumerico incremental)
-VALOR (Trabaja con tabla *TARIFA*)
+ID COCHERA
+ID VEHICULO
+ID EMPLEADO
 ENTRADA_TIME
 SALIDA_TIME
+TIEMPO_USO
+TIPO_PRECIO (hora,m estadia, estadia)
+IMPORTE
+
 
 -TABLA DE LOGEOS EMPLEADOS-
-*TABLA_LOG_EMPLEADOS*
+*LOG_EMPLEADOS*
+ID_LOGIN
 ID EMPLEADO
 DATE
 LOGIN_TIME
 LOGOUT_TIME
+
+-TABLA LOG ERRORES-
+*LOGS*
+LOGIN_TIME
+TIPO LOG (correcto/error)
+if (error)
+{
+        USUARIO_INGRESADO (ok/notOK)
+        PASSWORD_INGRESADO (ok/notOK)
+}
 
 
 
