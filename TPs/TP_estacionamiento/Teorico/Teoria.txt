@@ -1,38 +1,42 @@
 -DATOS ESTATICOS -
+
+Nombre BD:
 BD -> *tp_estacionamiento*
-    *ESTACIONAMIENTO*
-    ID_PISO 
-    ID_ESTACIONAMIENTO (Autonumerico incremental)
-    CANT_COCHERAS
+    
+
+*ESTACIONAMIENTO*
+        ID_PISO 
+        ID_ESTACIONAMIENTO (Autonumerico incremental)
+        CANT_COCHERAS
 
 *PISO*
-ID PISO (Autonumerico incremental)
-ID COCHERA
-LUGAR DISPONIBLE (SI/NO)
+        ID PISO (Autonumerico incremental)
+        ID COCHERA
+        LUGAR DISPONIBLE (SI/NO)
 
 *EMPLEADO*
-ID EMPLEADO (Autonumerico incremental)
-NOMBRE
-TURNO (MAÑANA/TARDE/NOCHE)
+        ID EMPLEADO (Autonumerico incremental)
+        NOMBRE
+        TURNO (MAÑANA/TARDE/NOCHE)
 
 *TARIFA*
-ID TARIFA
-TIPO (HORA / MEDIA_ESTADIA / ESTADIA)
-IMPORTE (10 / 90 / 170)
+        ID TARIFA
+        TIPO (HORA / MEDIA_ESTADIA / ESTADIA)
+        IMPORTE (10 / 90 / 170)
 
 
 *COCHERA* 
-ID COCHERA
-NRO COCHERA (nombre numerico para la cochera)
-RESERVADA (SI / NO)
-TIPO (RESERVADA / NORMAL) (MINIMO 3 RESERVADAS POR PISO)
-ESTADO (OCUPADA /LIBRE)
+        ID COCHERA
+        NRO COCHERA (nombre numerico para la cochera)
+        RESERVADA (SI / NO)
+        TIPO (RESERVADA / NORMAL) (MINIMO 3 RESERVADAS POR PISO)
+        ESTADO (OCUPADA /LIBRE)
 
 *VEHICULO*
-ID VEHICULO
-PATENTE (SE BUSCA POR PATENTE)
-COLOR 
-MARCA
+        ID VEHICULO
+        PATENTE (SE BUSCA POR PATENTE)
+        COLOR 
+        MARCA
 
 
 
@@ -42,34 +46,33 @@ MARCA
 
 -TABLA DE OPERACIONES VEHICULO-
 *OP_VEHICULO*
-ID OPERACION (Autonumerico incremental)
-ID COCHERA
-ID VEHICULO
-ID EMPLEADO
-ENTRADA_TIME
-SALIDA_TIME
-TIEMPO_USO
-TIPO_PRECIO (hora,m estadia, estadia)
-IMPORTE
+        ID OPERACION (Autonumerico incremental)
+        ID COCHERA
+        ID VEHICULO
+        ID EMPLEADO
+        ENTRADA_TIME
+        SALIDA_TIME
+        TIEMPO_USO
+        TIPO_PRECIO (hora,m estadia, estadia)
+        IMPORTE
 
 
 -TABLA DE LOGEOS EMPLEADOS-
 *LOG_EMPLEADOS*
-ID_LOGIN
-ID EMPLEADO
-DATE
-LOGIN_TIME
-LOGOUT_TIME
+        ID_LOGIN
+        ID EMPLEADO
+        DATE
+        LOGIN_TIME
+        LOGOUT_TIME
+
 
 -TABLA LOG ERRORES-
 *LOGS*
-LOGIN_TIME
-TIPO LOG (correcto/error)
-if (error)
-{
+        LOGIN_TIME
+        TIPO LOG (correcto/error)
         USUARIO_INGRESADO (ok/notOK)
         PASSWORD_INGRESADO (ok/notOK)
-}
+
 
 
 
