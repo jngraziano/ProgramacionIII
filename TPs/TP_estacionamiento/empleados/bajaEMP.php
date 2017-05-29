@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Sistema de Vehiculos</title>
+  <title>Baja Empleado</title>
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -15,16 +15,17 @@
       <div id="logo">
         <div id="logo_text">
           <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="index.html">Sistema de Vehículos<span class="logo_colour"></span></a></h1>
-          <h2>Pagina de cambio de informacion.</h2>
+           <h1><a href="indexADM.html">BAJA de EMPLEADOS<span class="logo_colour"></span></a></h1>
+          <h2>Alumno: Julian Graziano.</h2>
+          <h2>Curso: ProgramacionIII.</h2>
         </div>
       </div>
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href="index.html">Home</a></li>
-          <li><a href="alta.php">Alta</a></li>
-          <li><a href="modificacion.php">Modificar</a></li>
+          <li class="selected"><a href="../indexADM.html">Home</a></li>
+          <li><a href="../empleados/opciones_empleados.php">Empleados</a></li>
+          <li><a href="../cocheras/opciones_cocheras.php">Cocheras</a></li>
           <li><a href="eliminacion.php">Eliminar</a></li>
           <li><a href="listado.php">Listar</a></li>
           <li><a href="contact.html">Contacto</a></li>
@@ -33,36 +34,28 @@
     </div>
     <div id="site_content">
       <div class="sidebar">
-        <!-- insert your sidebar items here -->
-        <h3>Ultimas Modificaciones</h3>
-        <h4>Update v2</h4>
-        <h5>29 de Mayo,2017</h5>
-        <p>Retoques.<br></p>
-         <h4>Update v1</h4>
-        <h5>27 de Abril,2017</h5>
-        <p>Creacion de la pagina.<br></p>
-      
+        <!-- insert your sidebar items here -->      
         <h3>Links utiles</h3>
         <ul>
-         <li><a href="https://www.github.com/jngraziano">Mi Github</a></li>
+         <li><a href="https://www.github.com/jngraziano">My Github</a></li>
           <li><a href="https://www.w3schools.com/">W3school</a></li>
-          <li><a href="http://php.net/">Php.net</a></li>
+          <li><a href="http://php.net/">PHP.NET</a></li>
           <li><a href="http://www.sistemas-utnfra.com.ar/#/home">UTN Fra</a></li>
         </ul>
-      
+
       </div>
-     
       <div id="content">
         <!-- insert the page content here -->
-        <h1>Bienvenido</h1>
-        <p>Esta es la pagina para realizar cambios sobre el sistema de Vehículos.</p><br>
+        <h1>Baja de Empleados</h1>
+        <p>Esta es la pagina para dar de baja Empleados al sistema.</p><br>
         <!--<p style="color:blue">prueba </p>-->
-        <h2>Compatibilidad de Navegadores</h2>
-        <p>Esta página es funcional en los siguientes navegadores:</p>
-        <ul>
-          <li>Internet Explorer 9 en adelante.</li>
-          <li>FireFox 25 en adelante.</li>
-          <li>Google Chrome 31 en adelante.</li>
+     <form id="FormIngreso" method="post" action="administracion.php" >
+    <h4>Dar de baja un Empleado</h4>
+      
+      <input placeholder="Ingrese Nombre" type="text" tabindex="1" name="Nombre1" required autofocus>
+      <br><br>
+      <button name="submit" type="Aceptar1" id="contact-submit" data-submit="...Cargando">Aceptar</button>
+     
         </ul>
       </div>
     </div>
