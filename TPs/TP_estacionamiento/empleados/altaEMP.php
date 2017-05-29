@@ -7,6 +7,13 @@
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
+  <style>
+  body {
+          /*Imagen de fondo:*/
+          background-image: url("https://i2.wp.com/www.roshfrans.com/wp-content/uploads/2016/06/Estacionamiento.png?fit=1400%2C600");
+  } 
+  
+  </style>
 </head>
 
 <body>
@@ -26,9 +33,7 @@
           <li class="selected"><a href="indexADM.html">Home</a></li>
           <li><a href="../empleados/opciones_empleados.php">Empleados</a></li>
           <li><a href="../cocheras/opciones_cocheras.php">Cocheras</a></li>
-          <li><a href="eliminacion.php">Eliminar</a></li>
-          <li><a href="listado.php">Listar</a></li>
-          <li><a href="contact.html">Contacto</a></li>
+          <li><a href="login.html">LogOFF</a></li>
         </ul>
       </div>
     </div>
@@ -62,7 +67,7 @@
       </div>
     </div>
     <div id="footer">
-      Este template fue adquirido en: Copyright &copy; black_white | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Free CSS Templates</a>
+      <!--Este template fue adquirido en: Copyright &copy; black_white | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Free CSS Templates</a>-->
     </div>
   </div>
 </body>
