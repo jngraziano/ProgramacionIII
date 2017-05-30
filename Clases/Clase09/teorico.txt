@@ -1,0 +1,17 @@
+Tabla:
+-Usuario-
+ID (auto)
+MAIL
+CLAVE
+ESTADO
+
+metodos:
+get -traer todos
+    -traer uno (ID)
+
+post -alta
+delete -baja
+put -modificacion(clave estado)
+patch -cambiar estado -"habilitado"
+                      -"desabilitado"
+post  -validar usuario

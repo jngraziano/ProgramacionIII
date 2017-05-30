@@ -17,6 +17,9 @@ https://app.getpostman.com
 -se utiliza bower para bajar codigo de github. el parecido compouser
 https://getcomposer.org/doc/00-intro.md
 
+Pagina para crear datos ramdom:
+http://www.mockaroo.com/
+
 Como instalar composer
 bajamos y lo instalamos. 
 Creamos una carpeta en htdocs
