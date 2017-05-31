@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>ALTA de PRODUCTOS</title>
+	<title>ALTA de USUARIOS</title>
 	  
 		<meta charset="UTF-8">
 
@@ -11,12 +11,12 @@
 	<a class="btn btn-info" href="indexBD.html">Menu DB</a>
     <a class="btn btn-info" href="index.html">Menu Principal</a>
 <?php     
-	require_once("clases\producto.php");
+	require_once("clases\usuario.php");
 ?>
 	<div class="container">
 	
 		<div class="page-header">
-			<h1>PRODUCTOS</h1>      
+			<h1>USUARIO</h1>      
 		</div>
 		<div class="CajaInicio animated bounceInRight">
 			<h1>ALTA-LISTADO - con archivos -</h1>
