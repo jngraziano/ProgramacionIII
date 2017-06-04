@@ -124,14 +124,18 @@ class Usuario
 	public static function ValidarUsuario($nombre,$password)
 	{
 		
-		if(Usuario::TraerUnUsuario($nombre) == 0 && GetPassword() == $password)
+		if(Usuario::TraerUnUsuario($nombre) == 0)
 		{
 			$rta= "El usuario no existe";
 		}
-		else 
+		else if(Usuario::TraerUnUsuario($nombre) == 1 && GetPassword() == $password) 
 		{
 			$rta="El usuario existe";
 		}
+        else
+        {
+            $rta= "Contraseña incorrecta";
+        }
         return $rta;
 	}
 	
