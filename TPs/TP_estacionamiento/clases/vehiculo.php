@@ -1,71 +1,58 @@
 <?php
-//Incluimos la clase AccesoDatos.php que no estaba. La copiamos desde la Carpeta Clases de Clase06
 require "AccesoDatos.php";
 class Vehiculo
 {
 //--------------------------------------------------------------------------------//
 //--ATRIBUTOS
-	private $Marca;
- 	private $Modelo;
-  	private $Tipo;
-	private $Año;
-	private $Precio;
+	private $MARCA;
+ 	private $PATENTE;
+  	private $COLOR;
+	private $ESTADO
 //--------------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------------//
 //--GETTERS Y SETTERS
 	public function GetMarca()
 	{
-		return $this->Marca;
+		return $this->MARCA;
 	}
-	public function GetModelo()
+	public function GetPatente()
 	{
-		return $this->Modelo;
+		return $this->PATENTE;
 	}
-	public function GetTipo()
+	public function GetColor()
 	{
-		return $this->Tipo;
+		return $this->COLOR;
 	}
-	public function GetAnio()
+	public function GetEstado()
 	{
-		return $this->Año;
+		return $this->ESTADO;
 	}
-	public function GetPrecio()
-	{
-		return $this->Precio;
-	}
-
 	public function SetMarca($valor)
 	{
-		$this->Marca = $valor;
+		$this->MARCA = $valor;
 	}
-	public function SetModelo($valor)
+	public function SetPatente($valor)
 	{
-		$this->Modelo = $valor;
+		$this->PATENTE = $valor;
 	}
-	public function SetTipo($valor)
+	public function SetColor($valor)
 	{
-		$this->Tipo = $valor;
+		$this->COLOR = $valor;
 	}
-	public function SetAnio()
+	public function SetEstado($valor)
 	{
-		$this->Año = $valor;
+		$this->ESTADO = $valor;
 	}
-	public function SetPrecio()
-	{
-		$this->Precio = $valor;
-	}
-
 //--------------------------------------------------------------------------------//
 //--CONSTRUCTOR
-	public function __construct($Marca=NULL, $Modelo=NULL, $Tipo=NULL, $Año=NULL,$Precio=NULL)
+	public function __construct($MARCA=NULL, $PATENTE=NULL, $COLOR=NULL, $ESTADO)
 	{
-		if($Marca !== NULL && $Modelo !== NULL && $Tipo !== NULL && $Año !== NULL && $Precio !== NULL){
-			$this->Marca = $Marca;
-			$this->Modelo = $Modelo;
-			$this->Tipo = $Tipo;
-			$this->Año=$Año;
-			$this->Precio=$Precio;
+		if($MARCA !== NULL && $PATENTE !== NULL && $COLOR !== NULL){
+			$this->MARCA = $MARCA;
+			$this->PATENTE = $PATENTE;
+			$this->COLOR = $COLOR;
+			$this->ESTADO = $ESTADO;
 		}
 	}
 
@@ -73,86 +60,64 @@ class Vehiculo
 //--TOSTRING	
   	public function ToString()
 	{
-	  	return $this->Marca." - ".$this->Modelo." - ".$this->Tipo." - ".$this->Año." - ".$this->precio."\r\n";
+	  	return $this->MARCA." - ".$this->PATENTE." - ".$this->COLOR." - ".$this->ESTADO."\r\n";
 	}
 //--------------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------------//
 //--METODOS DE CLASE
-	public static function GuardarenTxt($obj)
-	{
-		$resultado = FALSE;
-		if(!file_exists("Archivos"))
-		{
-			mkdir("Archivos",0777);
-		}
-		//ABRO EL ARCHIVO
-		$ar = fopen("Archivos/vehiculos.txt", "a");
-		
-		//ESCRIBO EN EL ARCHIVO
-		$cant = fwrite($ar, $obj->ToString());
-		
-		if($cant > 0)
-		{
-			$resultado = TRUE;			
-		}
-		//CIERRO EL ARCHIVO
-		fclose($ar);
-		
-		return $resultado;
-	}
-	public static function TraerTodosLosProductosTxt()
-	{
-
-		$ListaDeProductosLeidos = array();
-
-		//leo todos los productos del archivo txt
-		$archivo=fopen("Archivos/vehiculos.txt", "r");
-		
-		while(!feof($archivo))
-		{
-			$archAux = fgets($archivo);
-			$productos = explode(" - ", $archAux);
-			//http://www.w3schools.com/php/func_string_explode.asp
-			$vehiculo[0] = trim($vehiculo[0]);
-			if($productos[0] != ""){
-				$ListaDeProductosLeidos[] = new Vehiculo($vehiculo[0], $vehiculo[1],$vehiculo[2],$vehiculo[3],$vehiculo[4]);
-			}
-		}
-		fclose($archivo);
-		
-		return $ListaDeProductosLeidos;
-		
-	}
-	public static function GuardarenBD($obj)
+	
+	public static function Alta($obj)
 	{
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `rodados`(`pMarca`, `Modelo`, `Tipo`, `Año`, `Precio`) VALUES ($obj[0],$obj[1],$obj[2],$obj[3],$obj[4])');
-		$consulta->Execute();//Es para ejecutar la consulta.
+		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `vehiculos`(`PATENTE`, `COLOR`, `MARCA`, `ESTADO`) VALUES ($obj[0],$obj[1],$obj[2],"HABILITADO")');
+		$consulta->Execute();
 	}
-	public static function TraerTodosLosProductosBD()
+
+	public static function Baja($aux)
 	{
-		//http://localhost:8080/ProgramacionIII/Clase06/# aca tenemos los distintos tipos de fetch
+		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+		$consulta = $objetoAcceso->RetornarConsulta('UPDATE `vehiculos` SET `ESTADO`=["DESHABILITADO"] WHERE PATENTE=:patente');
+		$consulta->bindvalue(':patente',$aux, PDO::PARAM_STRING);
+		$consulta->Execute();
+	}
+	public static function Modificacion($obj)
+	{
+		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+		$consulta = $objetoAcceso->RetornarConsulta('UPDATE `vehiculos` SET `PATENTE`=["$obj[0]"] COLOR=["$obj[1]"] MARCA=["obj[2]"] WHERE PATENTE=:patente');
+		$consulta->bindvalue(':patente',$aux, PDO::PARAM_STRING);
+		$consulta->Execute();
+
+
+	}
+
+	public static function TraerTodosLosVehiculos()
+	{
+		
 		$arrayRetorno = array();
-		//Este Metodo esta creado por nosotros este.
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('SELECT codigo_barra as codBarra, nombre, path_foto as pathFoto FROM `producto`');
-		$consulta->Execute();//Es para ejecutar la consulta.
-		// $datos =$consulta->fetchall();
-		// $datos_2 = $consulta->fetch(PDO::FETCH_LAZY);
-		// $datos_3 = $consulta -> fetchObject("producto");
-		// var_dump($consulta);
-		//	var_dump($datos);
-		// var_dump($datos_2);
-		 while ($fila = $consulta->fetchObject("Vehiculo")) //devuelve true o false depende si encuentra o no el objeto. 
-		 //Sale cuando es false claramente.
-		 {//FETCHOBJECT -> RETORNA UN OBJETO DE UNA CALSE DADA
-              // var_dump($fila);
+		$consulta = $objetoAcceso->RetornarConsulta('SELECT PATENTE, COLOR, MARCA, ESTADO FROM `vehiculos`');
+		$consulta->Execute();
+		 while ($fila = $consulta->fetchObject("Vehiculo"))
+		 {
 			 array_push($arrayRetorno,$fila);
 		 }
 		 
 		 return $arrayRetorno;
-		// var_dump($datos_3);
+	}
+	public static function TraerUnVehiculo($aux)
+	{
+		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+        $consulta = $objetoAcceso->RetornarConsulta('SELECT PATENTE, COLOR, MARCA, ESTADO FROM vehiculos WHERE PATENTE=:patente');
+        $consulta->bindParam("patente", $aux);
+        $consulta->execute();
+        $uno = $consulta->fetchAll();
+         if($uno == NULL)
+          {
+              $uno="No existe";
+              return $uno;
+          }
+        return $uno;
 	}
 //--------------------------------------------------------------------------------//
 }

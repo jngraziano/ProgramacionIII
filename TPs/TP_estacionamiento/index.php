@@ -9,25 +9,6 @@ $config = ['settings' => [
 ]];
 $app = new \Slim\App($config);
 
-// Ejemplo traertodos con codigo
-// $app->get('/traertodos', function ($request, $response) {
-//     $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-//     $consulta = $objetoAcceso->RetornarConsulta('SELECT * FROM usuario');
-//     $consulta->execute();
-//     $todos = $consulta->fetchAll();
-//     return $response->withJson($todos);
-// });
-// Ejemplo traer uno solo con codigo
-// $app->get('/traeruno/[{id}]', function ($request, $response, $args) {
-//           $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-//           $consulta = $objetoAcceso->RetornarConsulta('SELECT ID, CLAVE, MAIL, ESTADO FROM usuario WHERE id=:id');
-//           $consulta->bindParam("id", $args['id']);
-//            $consulta->execute();
-//             $uno = $consulta->fetchAll();
-//             return $response->withJson($uno);
-//         });
-
-
 $app->get('/traertodos', function ($request, $response) {
     $usuarios = Usuario::TraerTodosLosUsuariosBD();
     return $response->withJson($usuarios);
