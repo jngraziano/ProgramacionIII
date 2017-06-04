@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2017 a las 02:06:54
+-- Tiempo de generación: 04-06-2017 a las 19:46:47
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -32,18 +32,6 @@ CREATE TABLE `cocheras` (
   `RESERVADA` int(11) NOT NULL,
   `TIPO` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `ESTADO` varchar(30) COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'LIBRE'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `empleados`
---
-
-CREATE TABLE `empleados` (
-  `ID_EMPLEADO` int(11) NOT NULL,
-  `NOMBRE` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `TURNO` varchar(30) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -131,6 +119,21 @@ CREATE TABLE `tarifas` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `ID_EMPLEADO` int(11) NOT NULL,
+  `NOMBRE` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `TURNO` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `PASSWORD` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `TIPO` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `ESTADO` varchar(20) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `vehiculos`
 --
 
@@ -150,12 +153,6 @@ CREATE TABLE `vehiculos` (
 --
 ALTER TABLE `cocheras`
   ADD PRIMARY KEY (`ID_COCHERA`);
-
---
--- Indices de la tabla `empleados`
---
-ALTER TABLE `empleados`
-  ADD PRIMARY KEY (`ID_EMPLEADO`);
 
 --
 -- Indices de la tabla `estacionamientos`
@@ -194,6 +191,12 @@ ALTER TABLE `tarifas`
   ADD PRIMARY KEY (`ID_TARIFA`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`ID_EMPLEADO`);
+
+--
 -- Indices de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
@@ -208,11 +211,6 @@ ALTER TABLE `vehiculos`
 --
 ALTER TABLE `cocheras`
   MODIFY `ID_COCHERA` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `empleados`
---
-ALTER TABLE `empleados`
-  MODIFY `ID_EMPLEADO` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `estacionamientos`
 --
@@ -243,6 +241,11 @@ ALTER TABLE `pisos`
 --
 ALTER TABLE `tarifas`
   MODIFY `ID_TARIFA` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `ID_EMPLEADO` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
