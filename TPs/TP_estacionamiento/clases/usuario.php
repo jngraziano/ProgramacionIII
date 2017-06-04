@@ -123,19 +123,36 @@ class Usuario
     
 	public static function ValidarUsuario($nombre,$password)
 	{
-		
-		if(Usuario::TraerUnUsuario($nombre) == 0)
-		{
-			$rta= "El usuario no existe";
-		}
-		else if(Usuario::TraerUnUsuario($nombre) == 1 && GetPassword() == $password) 
-		{
-			$rta="El usuario existe";
-		}
-        else
-        {
-            $rta= "Contraseña incorrecta";
-        }
+        
+         $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+         $objetoAcceso2 = AccesoDatos::DameUnObjetoAcceso();
+            $consulta = $objetoAcceso->RetornarConsulta('SELECT nombre FROM usuarios WHERE nombre=:nombre');
+            $consulta2 = $objetoAcceso2->RetornarConsulta('SELECT `password` FROM usuarios WHERE `password`=:pass');
+            
+            $consulta->bindParam("nombre",$nombre);
+            $consulta2->bindParam("pass",$password);
+            
+            $consulta->execute();
+            $consulta2->execute();
+            $uno= $consulta->fetchAll();
+            $dos= $consulta2->fetchAll();
+
+            // var_dump($uno);
+            // var_dump($dos);
+
+            if($uno == NULL)
+            {
+                $rta= "El usuario no existe";
+            }
+            else if($uno == TRUE && $dos != TRUE)
+            {
+                $rta= "Contraseña incorrecta";
+               
+            }
+            else
+            {
+                 $rta="El usuario existe";
+            }
         return $rta;
 	}
 	

@@ -9,8 +9,7 @@ $app->get('/traertodosusuarios', function ($request, $response) {
 $app->get('/validarusuario', function ($request, $response) {
          
           $obj = isset($_GET['usuario']) ? json_decode(json_encode($_GET['usuario'])) : NULL;
-        //  $nombreobj= $obj->Nombre;
-        //   var_dump($obj);
+        
           $rta = Usuario::ValidarUsuario($obj->usuarioid,$obj->passwordid);
           return $response->withJson($rta);
         });
