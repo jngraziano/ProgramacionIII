@@ -1,135 +1,139 @@
 <?php
+
 require "AccesoDatos.php";
 class Usuario
 {
 //--------------------------------------------------------------------------------//
 //--ATRIBUTOS
-    private $NOMBRE;
- 	private $TURNO;
-    private $PASSWORD;
-	private $TIPO;
-    private $ESTADO;
-//--------------------------------------------------------------------------------//
-
+	private $Nombre;
+ 	private $Turno;
+  	private $Password;
+	private $Tipo;
+	private $Estado;
 //--------------------------------------------------------------------------------//
 //--GETTERS Y SETTERS
-    public function GetNombre()
-    {
-        return $this->NOMBRE;
-    }
+	public function GetNombre()
+	{
+		return $this->Nombre;
+	}
 	public function GetTurno()
 	{
-		return $this->TURNO;
+		return $this->Turno;
 	}
 	public function GetPassword()
 	{
-		return $this->PASSWORD;
+		return $this->Password;
 	}
 	public function GetTipo()
 	{
-		return $this->TIPO;
+		return $this->Tipo;
 	}
-    public function GetEstado()
+	public function GetEstado()
 	{
-		return $this->ESTADO;
+		return $this->Estado;
 	}
-    public function SetNombre($valor)
+	public function SetNombre($valor)
 	{
-		$this->NOMBRE = $valor;
+		$this->Nombre = $valor;
 	}
-
 	public function SetTurno($valor)
 	{
-		$this->TURNO = $valor;
+		$this->Turno = $valor;
 	}
 	public function SetPassword($valor)
 	{
-		$this->PASSWORD = $valor;
+		$this->Password = $valor;
 	}
-    public function SetTipo($valor)
+	public function SetTipo($valor)
 	{
-		$this->TIPO = $valor;
+		$this->Tipo = $valor;
 	}
-     public function SetEstado($valor)
+	public function SetEstado($valor)
 	{
-		$this->ESTADO = $valor;
+		$this->Estado = $valor;
 	}
 //--------------------------------------------------------------------------------//
 //--CONSTRUCTOR
-	public function __construct($NOMBRE=NULL,$TURNO=NULL, $PASSWORD=NULL,$TIPO=NULL,$ESTADO=NULL)
+	public function __construct( $Nombre=NULL, $Turno=NULL, $Password=NULL, $Tipo=NULL, $Estado=NULL)
 	{
-		if($NOMBRE=NULL && $TURNO !== NULL && $TIPO !== NULL && $ESTADO !==NULL && $HABILITADA !==NULL){
-			$this->NOMBRE = $NOMBRE;
-            $this->TURNO = $TURNO;
-			$this->PASSWORD = $PASSWORD;
-			$this->TIPO = $TIPO;
-            $this->ESTADO = $ESTADO;
+		if($Nombre !== NULL && $Turno !== NULL && $Password !== NULL && $Tipo !== NULL && $Estado !== NULL ){
+			$this->Nombre = $Nombre;
+			$this->Turno = $Turno;
+			$this->Password = $Password;
+			$this->Tipo = $Tipo;
+			$this->Estado = $Estado;
 		}
 	}
-
 //--------------------------------------------------------------------------------//
 //--TOSTRING	
   	public function ToString()
 	{
-	  	return $this->NOMBRE." - ".$this->TURNO." - ".$this->PASSWORD" - ".$this->TIPO." - ".$this->ESTADO."\r\n";
+	  	return $this->Nombre." - ".$this->Turno." - ".$this->Password."\r\n";
 	}
 //--------------------------------------------------------------------------------//
-
 //--------------------------------------------------------------------------------//
 //--METODOS DE CLASE
-	
 	public static function Alta($obj)
 	{
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `usuario`(`NOMBRE`, `TURNO`, `PASSWORD`, `TIPO`,`ESTADO`) VALUES ($obj[0],$obj[1],$obj[2],$obj[3],"DISPONIBLE")');
+		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `usuarios`(`nombre`, `turno`, `password`, `tipo`,`estado`) VALUES ($obj[0],$obj[1],$obj[2],$obj[3],$obj[4])');
 		$consulta->Execute();
 	}
-
 	public static function Baja($aux)
 	{
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('UPDATE `usuario` SET `ESTADO`=["NO DISPONIBLE"] WHERE NOMBRE=:nombre');
-		$consulta->bindvalue(':nombre',$aux, PDO::PARAM_STRING);
+		$consulta = $objetoAcceso->RetornarConsulta('UPDATE `usuarios` SET `Estado`=0 WHERE `Nombre`=:Nombre ');
+		$consulta->bindvalue(':Nombre', $aux , PDO::PARAM_STRING);
 		$consulta->Execute();
 	}
-    
-	public static function Modificacion($obj)
+	public static function Modificacion($obj) //PATENTE, nro_cochera, Password 
 	{
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('UPDATE `usuario` SET `NOMBRE`=["$obj[0]"] TURNO=["$obj[1]"] `PASSWORD`=["obj[2]"] TIPO=["obj[3]"] ESTADO=["$obj[4]"] WHERE NOMBRE=:nombre');
-		$consulta->bindvalue(':nombre',$aux, PDO::PARAM_INT);//ARREGLAAR DOBLE NROCOCHERA
+		$consulta = $objetoAcceso->RetornarConsulta('UPDATE `usuarios` SET `nombre`=$obj[0],`Password`=$obj[1],`Turno`=$obj[2],`Estado`=$obj[3]  WHERE `nombre`=:nombre ');
+		$consulta->bindvalue(':nombre',$obj[0], PDO::PARAM_STRING); //ARREGLAR
 		$consulta->Execute();
-
-
 	}
-
-	public static function TraerTodosLosUsuarios()
+	public static function TraerTodosLosusuarios()
 	{
-		
 		$arrayRetorno = array();
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('SELECT NOMBRE, TURNO, TIPO, ESTADO FROM `usuarios`');
+		$consulta = $objetoAcceso->RetornarConsulta('SELECT nombre, `password`, tipo, turno, estado  FROM `usuarios`');
 		$consulta->Execute();
-		 while ($fila = $consulta->fetchObject("Usuario"))
-		 {
+		while ($fila = $consulta->fetchObject("Usuario"))
+		{
 			 array_push($arrayRetorno,$fila);
 		 }
 		 
 		 return $arrayRetorno;
 	}
 	public static function TraerUnUsuario($aux)
-	{
-		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-        $consulta = $objetoAcceso->RetornarConsulta('SELECT NOMBRE, TURNO, TIPO, ESTADO FROM usuarios WHERE NOMBRE=:nombre');
+    {
+        $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+        $consulta = $objetoAcceso->RetornarConsulta('SELECT nombre, `password`, tipo, estado, turno FROM usuarios WHERE nombre=:nombre');
         $consulta->bindParam("nombre", $aux);
         $consulta->execute();
         $uno = $consulta->fetchAll();
          if($uno == NULL)
           {
-              $uno="No existe";
+              $uno=0;
               return $uno;
           }
         return $uno;
+    }
+    
+	public static function ValidarUsuario($nombre)
+	{
+		
+		if(Usuario::TraerUnUsuario($nombre) == 0)
+		{
+			$rta= "El usuario no existe";
+		}
+		else 
+		{
+			$rta="El usuario existe";
+		}
+        return $rta;
 	}
+	
 //--------------------------------------------------------------------------------//
 }

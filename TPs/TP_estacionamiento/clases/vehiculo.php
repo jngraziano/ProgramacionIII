@@ -1,5 +1,5 @@
 <?php
-require "AccesoDatos.php";
+require_once "AccesoDatos.php";
 class Vehiculo
 {
 //--------------------------------------------------------------------------------//
@@ -7,7 +7,7 @@ class Vehiculo
 	private $MARCA;
  	private $PATENTE;
   	private $COLOR;
-	private $ESTADO
+	private $ESTADO;
 //--------------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------------//
