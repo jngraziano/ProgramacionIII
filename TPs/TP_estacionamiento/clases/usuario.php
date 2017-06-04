@@ -121,10 +121,10 @@ class Usuario
         return $uno;
     }
     
-	public static function ValidarUsuario($nombre)
+	public static function ValidarUsuario($nombre,$password)
 	{
 		
-		if(Usuario::TraerUnUsuario($nombre) == 0)
+		if(Usuario::TraerUnUsuario($nombre) == 0 && GetPassword() == $password)
 		{
 			$rta= "El usuario no existe";
 		}

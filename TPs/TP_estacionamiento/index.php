@@ -6,10 +6,15 @@ $app->get('/traertodosusuarios', function ($request, $response) {
     $usuarios = Usuario::TraerTodosLosusuarios();
     return $response->withJson($usuarios);
 });
-$app->get('/validarusuario/[{id}]', function ($request, $response, $args) {
-          $rta = Usuario::ValidarUsuario($args['id']);
+$app->get('/validarusuario', function ($request, $response) {
+         
+          $obj = isset($_GET['usuario']) ? json_decode(json_encode($_GET['usuario'])) : NULL;
+        //  $nombreobj= $obj->Nombre;
+        //   var_dump($obj);
+          $rta = Usuario::ValidarUsuario($obj->usuarioid,$obj->passwordid);
           return $response->withJson($rta);
         });
+
 $app->get('/traerunusuario/[{id}]', function ($request, $response, $args) {
           $uno = Usuario::TraerUnUsuario($args['id']);
           return $response->withJson($uno);
@@ -28,7 +33,7 @@ $app->put('/modificacion', function ($request, $response) {
 $app->patch('/cambiarestado', function ($request, $response) {
     return $response->write("cambiarestado.");
 });
-$app->post('/validarusuario', function ($request, $response) {
+$app->post('/validarusuario2', function ($request, $response) {
     return $response->write("validarusuario.");
 });
 $app->run();
