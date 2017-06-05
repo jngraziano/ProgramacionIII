@@ -2,7 +2,7 @@
 function ValidarUsuario()
 {
    
-	//alert("Hola Mundo!");
+	
 
     var pagina = "http://localhost/ProgramacionIII/TPs/TP_estacionamiento/index.php/validarusuario";
 
