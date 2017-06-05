@@ -125,20 +125,10 @@ class Usuario
 	{
         
          $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-       
-        //  $objetoAcceso3 = AccesoDatos::DameUnObjetoAcceso();
-            $consulta = $objetoAcceso->RetornarConsulta('SELECT nombre FROM usuarios WHERE nombre=:nombre');
-            
-            // $consulta3 = $objetoAcceso3->RetornarConsulta('SELECT nombre, `password` FROM usuarios WHERE nombre=:nombre AND `password`=:pass')
-            
+         $consulta = $objetoAcceso->RetornarConsulta('SELECT nombre FROM usuarios WHERE nombre=:nombre');            
             $consulta->bindParam("nombre",$nombre);
-        
-            
             $consulta->execute();
-            
             $uno= $consulta->fetchAll();
-            
-
 
             if($uno == NULL)
             {
@@ -155,7 +145,11 @@ class Usuario
                 
                 if($dos == TRUE)
                 {
-                    $rta= "El usuario existe";
+                    $rta= "Bienvenido"." ".$nombre; 
+                        // $objetoAcceso3 = AccesoDatos::DameUnObjetoAcceso();                  
+                        // $consulta3 = $objetoAcceso3->RetornarConsulta('INSERT INTO `logs`(`TIMESTAMP_LOGIN`, `TIPO_INGRESO`, `USUARIO_INGRESADO`, `PASSWORD_INGRESADO`) VALUES (NOW,"EMP",$nombre,`$password`)');
+                        // $consulta3->execute();
+                        //HASTA ACA LLEGUE, ESTO NO FUNCIONA
                 }
                 else
                 {

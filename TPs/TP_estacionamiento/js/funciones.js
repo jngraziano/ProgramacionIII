@@ -23,6 +23,7 @@ function ValidarUsuario()
 		},
 		success: function(data, textStatus, jqXHR){
 			alert(data);
+			window.location.href="./indexEMP.html";
 		
 		},
 		error: function(jqXHR, textStatus, errorThrown){
