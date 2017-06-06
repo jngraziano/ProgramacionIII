@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Entrada</title>
+  <title>ENTRADA</title>
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -21,7 +21,7 @@
     <div id="header">
       <div id="logo">
         <div id="logo_text">
-          <!-- class="logo_colour", allows you to change the colour of the text -->
+          
            <h1><a href="..\indexEMP.html">ENTRADA de VEHICULO<span class="logo_colour"></span></a></h1>
           <h2>Alumno: Julian Graziano.</h2>
           <h2>Curso: ProgramacionIII.</h2>
@@ -29,7 +29,7 @@
       </div>
       <div id="menubar">
         <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+      
           <li class="selected"><a href="..\indexEMP.html">Home</a></li>
          <li><a href="checkin_vehiculo.php">Entrada Vehiculo</a></li>
           <li><a href="checkout_vehiculo.php">Salida Vehiculo</a></li>
@@ -39,7 +39,7 @@
     </div>
     <div id="site_content">
       <div class="sidebar">
-        <!-- insert your sidebar items here -->      
+       
         <h3>Links utiles</h3>
         <ul>
          <li><a href="https://www.github.com/jngraziano">My Github</a></li>
@@ -67,7 +67,7 @@
       </div>
     </div>
     <div id="footer">
-      <!--Este template fue adquirido en: Copyright &copy; black_white | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Free CSS Templates</a>-->
+      <!--Espacio-->
     </div>
   </div>
 </body>

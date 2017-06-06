@@ -28,7 +28,7 @@ BD -> *tp_estacionamiento*
 *COCHERA* 
         ID COCHERA
         NRO COCHERA (nombre numerico para la cochera)
-        RESERVADA (SI / NO)
+        RESERVADA (1 / 0)
         TIPO (RESERVADA / NORMAL) (MINIMO 3 RESERVADAS POR PISO)
         ESTADO (OCUPADA /LIBRE)
 

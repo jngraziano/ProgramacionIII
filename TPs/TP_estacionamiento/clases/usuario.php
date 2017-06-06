@@ -1,6 +1,6 @@
 <?php
+//Incluimos la clase AccesoDatos.php que no estaba. La copiamos desde la Carpeta Clases de Clase06
 
-require "AccesoDatos.php";
 class Usuario
 {
 //--------------------------------------------------------------------------------//
@@ -32,6 +32,8 @@ class Usuario
 	{
 		return $this->Estado;
 	}
+
+
 	public function SetNombre($valor)
 	{
 		$this->Nombre = $valor;
@@ -52,6 +54,8 @@ class Usuario
 	{
 		$this->Estado = $valor;
 	}
+
+
 //--------------------------------------------------------------------------------//
 //--CONSTRUCTOR
 	public function __construct( $Nombre=NULL, $Turno=NULL, $Password=NULL, $Tipo=NULL, $Estado=NULL)
@@ -64,6 +68,7 @@ class Usuario
 			$this->Estado = $Estado;
 		}
 	}
+
 //--------------------------------------------------------------------------------//
 //--TOSTRING	
   	public function ToString()
@@ -71,12 +76,15 @@ class Usuario
 	  	return $this->Nombre." - ".$this->Turno." - ".$this->Password."\r\n";
 	}
 //--------------------------------------------------------------------------------//
+
 //--------------------------------------------------------------------------------//
 //--METODOS DE CLASE
+
+	//ABM
 	public static function Alta($obj)
 	{
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `usuarios`(`nombre`, `turno`, `password`, `tipo`,`estado`) VALUES ($obj[0],$obj[1],$obj[2],$obj[3],$obj[4])');
+		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO `usuarios`(`nombre`, `Turno`, `Password`, `Tipo`,`Estado`) VALUES ($obj[0],$obj[1],$obj[2],$obj[3],$obj[4])');
 		$consulta->Execute();
 	}
 	public static function Baja($aux)
@@ -93,6 +101,8 @@ class Usuario
 		$consulta->bindvalue(':nombre',$obj[0], PDO::PARAM_STRING); //ARREGLAR
 		$consulta->Execute();
 	}
+
+	//TRAER BD
 	public static function TraerTodosLosusuarios()
 	{
 		$arrayRetorno = array();
@@ -106,10 +116,11 @@ class Usuario
 		 
 		 return $arrayRetorno;
 	}
+
 	public static function TraerUnUsuario($aux)
     {
         $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-        $consulta = $objetoAcceso->RetornarConsulta('SELECT nombre, `password`, tipo, estado, turno FROM usuarios WHERE nombre=:nombre');
+        $consulta = $objetoAcceso->RetornarConsulta('SELECT nombre, `password`, tipo, turno, estado FROM usuarios WHERE nombre=:nombre');
         $consulta->bindParam("nombre", $aux);
         $consulta->execute();
         $uno = $consulta->fetchAll();
@@ -118,21 +129,26 @@ class Usuario
               $uno=0;
               return $uno;
           }
-        return $uno;
+		  else 
+		  {
+				return $uno;
+		  }
+        
     }
-    
+
+	//VALIDAR
 	public static function ValidarUsuario($nombre,$password)
 	{
         
-         $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-         $consulta = $objetoAcceso->RetornarConsulta('SELECT nombre FROM usuarios WHERE nombre=:nombre');            
+         	$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+            $consulta = $objetoAcceso->RetornarConsulta('SELECT nombre FROM usuarios WHERE nombre=:nombre');
             $consulta->bindParam("nombre",$nombre);
-            $consulta->execute();
+        
+            $consulta->execute();    
             $uno= $consulta->fetchAll();
-
             if($uno == NULL)
             {
-                $rta= "El usuario no existe";
+                $response_array['validacion'] = 'errorus';
             }
             else if($uno == TRUE )
             {
@@ -145,22 +161,48 @@ class Usuario
                 
                 if($dos == TRUE)
                 {
-                    $rta= "Bienvenido"." ".$nombre; 
-                        // $objetoAcceso3 = AccesoDatos::DameUnObjetoAcceso();                  
-                        // $consulta3 = $objetoAcceso3->RetornarConsulta('INSERT INTO `logs`(`TIMESTAMP_LOGIN`, `TIPO_INGRESO`, `USUARIO_INGRESADO`, `PASSWORD_INGRESADO`) VALUES (NOW,"EMP",$nombre,`$password`)');
-                        // $consulta3->execute();
-                        //HASTA ACA LLEGUE, ESTO NO FUNCIONA
-                }
+                    // $rta= "Bienvenido/a $nombre";
+					$response_array['validacion'] = 'ok';
+					$response_array['nombre'] = $nombre; 
+	                }
                 else
                 {
-                    $rta= "Contraseña incorrecta";
+                    // $rta= "Contraseña incorrecta";
+					$response_array['validacion'] = 'error';  
                 }
             }
-                
-               
-        
-        return $rta;
+        // return $rta;
+		return $response_array;
 	}
+
+	//INSERTAR LOGS
+	public static function ValidarTipoEmp ($nombre)
+	{
+			
+    		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+            $consulta = $objetoAcceso->RetornarConsulta('SELECT tipo FROM usuarios WHERE nombre=:nombre');
+            $consulta->bindParam("nombre",$nombre);
+            $consulta->execute();
+            $dos= $consulta->fetchObject("Usuario");
+			return $response_array['tipo_empleado']= $dos->tipo;
+	}
+
+	public static function InsertarBD ($nombre)
+	{
+			$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
+
+            //Inserto en los LOGS generales
+			$hoy = date('Y-m-d');
+				
+	  		$consulta = $objetoAcceso->RetornarConsulta('INSERT INTO logs(`NOMBRE_EMPLEADO`,`FECHA`,`HORA_ENTRADA`)  VALUES (:nombre,:hoy,NOW())');
+            $consulta->bindParam("nombre",$nombre);
+			$consulta->bindParam("hoy",$hoy);
+            $consulta->execute();
+		   return true;
+	}
+
 	
+	
+
 //--------------------------------------------------------------------------------//
 }

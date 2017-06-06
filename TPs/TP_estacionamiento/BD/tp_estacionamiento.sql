@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-06-2017 a las 19:46:47
+-- Tiempo de generación: 06-06-2017 a las 21:18:20
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -31,8 +31,20 @@ CREATE TABLE `cocheras` (
   `NRO_COCHERA` int(11) NOT NULL,
   `RESERVADA` int(11) NOT NULL,
   `TIPO` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `ESTADO` varchar(30) COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'LIBRE'
+  `ESTADO` varchar(30) COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'LIBRE',
+  `HABILITADA` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `cocheras`
+--
+
+INSERT INTO `cocheras` (`ID_COCHERA`, `NRO_COCHERA`, `RESERVADA`, `TIPO`, `ESTADO`, `HABILITADA`) VALUES
+(1, 1, 0, 'NORMAL', 'LIBRE', 1),
+(2, 2, 0, 'NORMAL', 'OCUPADA', 1),
+(3, 47, 1, 'DISCAPACITADO', 'LIBRE', 1),
+(4, 48, 1, 'DISCAPACITADO', 'LIBRE', 1),
+(5, 49, 1, 'DISCAPACITADO', 'OCUPADA', 1);
 
 -- --------------------------------------------------------
 
@@ -100,9 +112,17 @@ CREATE TABLE `operaciones` (
 
 CREATE TABLE `pisos` (
   `ID_PISO` int(11) NOT NULL,
-  `ID_COCHERA` int(11) NOT NULL,
-  `DISPONIBLE` int(11) NOT NULL DEFAULT '1'
+  `HABILITADO` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `pisos`
+--
+
+INSERT INTO `pisos` (`ID_PISO`, `HABILITADO`) VALUES
+(1, 1),
+(2, 1),
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -115,6 +135,15 @@ CREATE TABLE `tarifas` (
   `TIPO` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `IMPORTE` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `tarifas`
+--
+
+INSERT INTO `tarifas` (`ID_TARIFA`, `TIPO`, `IMPORTE`) VALUES
+(1, 'HORA', 10),
+(2, 'MEDIA ESTADIA', 90),
+(3, 'ESTADIA', 170);
 
 -- --------------------------------------------------------
 
@@ -131,6 +160,16 @@ CREATE TABLE `usuarios` (
   `ESTADO` varchar(20) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`ID_EMPLEADO`, `NOMBRE`, `TURNO`, `PASSWORD`, `TIPO`, `ESTADO`) VALUES
+(1, 'charly', 'MAÑANA', '123', 'ADMIN', 'HABILITADO'),
+(2, 'Pedro', 'MAÑANA', 'mycontra', 'EMP', 'HABILITADO'),
+(3, 'Leandro', 'NOCHE', '123', 'EMP', 'HABILITADO'),
+(4, 'Pedro', 'TARDE', '666', 'EMP', 'HABILITADO');
+
 -- --------------------------------------------------------
 
 --
@@ -141,7 +180,8 @@ CREATE TABLE `vehiculos` (
   `ID_VEHICULO` int(11) NOT NULL,
   `PATENTE` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
   `COLOR` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `MARCA` varchar(30) COLLATE utf8_spanish2_ci NOT NULL
+  `MARCA` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `ESTADO` varchar(20) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
@@ -210,7 +250,7 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT de la tabla `cocheras`
 --
 ALTER TABLE `cocheras`
-  MODIFY `ID_COCHERA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_COCHERA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `estacionamientos`
 --
@@ -235,17 +275,17 @@ ALTER TABLE `operaciones`
 -- AUTO_INCREMENT de la tabla `pisos`
 --
 ALTER TABLE `pisos`
-  MODIFY `ID_PISO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_PISO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tarifas`
 --
 ALTER TABLE `tarifas`
-  MODIFY `ID_TARIFA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_TARIFA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID_EMPLEADO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_EMPLEADO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
