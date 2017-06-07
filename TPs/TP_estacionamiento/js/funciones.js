@@ -2,7 +2,7 @@
 //VALIDO USUARIO Y PASSWORDS
 function ValidarUsuario()
 {
-    var paginaValid = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/validarusuario";
+    var paginaValid = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/validarusuario";
 
 	var usuarioid = $("#usuarioid").val();
 	var passwordid = $("#passwordid").val();
@@ -12,7 +12,7 @@ function ValidarUsuario()
 	usuario.usuarioid = usuarioid;
 	usuario.passwordid = passwordid;
    
-  //PRIMER AJAX PARA USUARIO
+  //PRIMER AJAX ENCAPSULA USUARIO
   $.ajax({
         type: 'GET',
         url: paginaValid,
@@ -27,7 +27,7 @@ function ValidarUsuario()
 			if(data.validacion == 'ok')
 			{
 				
-				var paginaTipoEmp = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/tipoempleado";
+				var paginaTipoEmp = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/tipoempleado";
 				var usuarioTipo = {};
 				usuarioTipo.usuarionombre = data.nombre;
 				//SEGUNDO AJAX - VERIFICA TIPO_EMPLEADO
@@ -45,10 +45,10 @@ function ValidarUsuario()
 							{
 								window.location.href = "./ADM_index.html"; 
 							}
-							else if (data == "EMP")
+							else if (data == "EMPLEADO")
 							{
-
-								window.location.href = "./EMP_index.html"; 
+								
+								window.location.href = "./EMP_index.php?name=" + usuarioTipo.usuarionombre;  
 							}
 						}
 				});
@@ -60,10 +60,10 @@ function ValidarUsuario()
 				alert("Error en contraseña");
 				window.location.href = "./login.html"; 
 			}
-			else if(data.validacion='errous')
+			else if(data.validacion == 'errorus')
 			{
 				alert("Error en el usuario");
-				window.location.href = "./login.html";
+				window.location.href = "./login.html"; 
 			}
 		},
 		error: function(jqXHR, textStatus, errorThrown){
@@ -78,7 +78,7 @@ function ValidarUsuario()
 function LoginBD()
 {
 	var usuarioid = $("#usuarioid").val();
-    var paginaLogin = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/loginbd/";
+    var paginaLogin = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/loginbd/";
 	var paginaFinal = paginaLogin.concat(usuarioid);
 
 	var usuarioLogin = {};
@@ -108,12 +108,43 @@ function AccionesIngreso ()
 }
 
 //<----------------------------------------VEHICULO------------------------>
+function VehiculoEstacionado()
+{
+	var patente = $("#patenteid").val();
+    var paginaSlim = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/traerunVehiculo/";
+	var paginaEstacionado = paginaSlim.concat(patente);
+	var succeed = false;
+	
+	$.ajax({
+		async: false,
+        type: 'GET',
+        url: paginaEstacionado,
+		dataType:"json",
+        data: {
+			patente : patente
+		},
 
+		success:
+		function(data, textStatus, jqXHR)
+		{
+			if (data == "SIN OPERACIONES")
+			{
+				succeed = false;
+			}
+			else 
+			{
+				succeed = true;
+			}
+		},
+
+	});
+	return succeed;
+}
 
 function VehiculoExiste()
 {
 	var patente = $("#patenteid").val();
-    var paginaExiste = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/traerunVehiculo/";
+    var paginaExiste = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/traerunVehiculo/";
 	var paginaVehic = paginaExiste.concat(patente);
 
 	  var succeed = false;
@@ -143,38 +174,125 @@ function VehiculoExiste()
 	return succeed;
 }
 
-function AccionesIngresoVehic()
+function InsertarAutoBD($nro_cochera,$hora,$patente,$nombre)
 {
-	alert(VehiculoExiste());
-	// VehiculoEstacionado();
-	// IngresoVehiculo();
+	var paginaOperacion = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/insertarOperacion";
+	var datosOperacion = {};
+
+	datosOperacion.nrocochera = $nro_cochera;
+	datosOperacion.hora = $hora;
+	datosOperacion.patente = $patente; 
+	datosOperacion.nombre = $nombre; 
+
+	var succeed = false;
+
+	$.ajax({
+	type: 'GET',
+	url: paginaOperacion,
+	data: {
+	datosOperacion : datosOperacion
+	},
+		success:
+		function(data, textStatus, jqXHR)
+		{	
+			// if (data == true)
+			// {
+			// 	succeed = true;
+			// }
+			// else 
+			// {
+			// 	succeed = false;
+			// }
+		}
+		});
+	return true;
+}
+//<----------------------------------------COCHERA------------------------>
+function TraerCocheraVacia()
+{
+	var patente = $("#patenteid").val();
+    var paginaCocheraVacia = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/cocheravacia";
+
+	var auto = {};
+	auto.patente = patente;
+
+	$.ajax({
+		async: false,
+        type: 'GET',
+        url: paginaCocheraVacia,
+		// dataType:"json",
+        data: {
+			auto : auto
+		},
+
+		success:
+		function(data, textStatus, jqXHR)
+		{
+			
+			if (data == "NO HAY")
+			{
+				succeed = false;
+			}
+			else 
+			{
+				succeed = JSON.stringify(data[0].nro_cochera);
+			}
+		},
+
+		});
+	return succeed;
 }
 
-// function IngresoVehiculo()}
-// {
-// 	var patente = $("#patente1").val();
-// 	var color = $("#color1").val();
-// 	var marca = $("#marca1").val();
+////////////////////////////////////////////OPERACIONES////////////////////////
+//SALIDA DEL VEHICULO
+function AccionesSalidaVehic()
+{
+	if( VehiculoExiste()) //Verifico si existe el vehículo
+	{
+		 if(VehiculoEstacionado())
+		 {
+			alert("estacionado");
+		 } 
+		 else
+		 {
+			 alert ("no estacionado");
+		 }
+	}
+	else 
+	{
+		alert ("no existe");
+	}
+}
+
+
+
+// //INGRESO DEL VEHICULO
+function AccionesIngresoVehic ($nombre)
+{
+	var patente = $("#patenteid").val();
+	//TRAER COCHERA VACIA
+	$nro_cochera= TraerCocheraVacia();
+	// $hora_entrada = new Date($.now());
+	d = Date().split(" ");
+ 	var hora = d[4]
 	
-//     var paginaLogin = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/loginbd/";
-// 	var paginaFinal = paginaLogin.concat(usuarioid);
+	//Conversion de variables
+	$hora = hora;
+	nro_cochera = $nro_cochera;
+	nombre = $nombre;
 
-// 	var usuarioLogin = {};
-// 	usuarioLogin.usuarionombre = usuarioid;
+	//MOSTRAR HORA ENTRADA Y DATOS
+	 $mensaje = "Cochera Disponible: "+$nro_cochera+" Hora Entrada: "+ $hora;
+	alert($mensaje);
+	
+	//INSERTAR EN LA BASE
+	if(InsertarAutoBD(nro_cochera,hora,patente,nombre))
+	{
+		alert("El vehiculo fue ingresado al  sistema");
+	}
 
-// 	$.ajax({
-//         type: 'GET',
-//         url: paginaFinal,
-//         dataType: "json",
-//         data: {
-// 			usuarioLogin : usuarioLogin
-// 		},
+}
 
-// 		success:
-// 		function(data, textStatus, jqXHR)
-// 		{
-// 		}
 
-// 	});
-// }
+
 

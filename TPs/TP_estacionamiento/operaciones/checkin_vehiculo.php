@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>ENTRADA</title>
+  <title>INGRESO</title>
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -10,7 +10,7 @@
   <style>
   body {
           /*Imagen de fondo:*/
-          background-image: url("https://i2.wp.com/www.roshfrans.com/wp-content/uploads/2016/06/Estacionamiento.png?fit=1400%2C600");
+         background-image: url("https://i2.wp.com/www.roshfrans.com/wp-content/uploads/2016/06/Estacionamiento.png?fit=1400%2C600");
   } 
   
   </style>
@@ -21,47 +21,34 @@
     <div id="header">
       <div id="logo">
         <div id="logo_text">
-          
-           <h1><a href="..\indexEMP.html">ENTRADA de VEHICULO<span class="logo_colour"></span></a></h1>
-          <h2>Alumno: Julian Graziano.</h2>
-          <h2>Curso: ProgramacionIII.</h2>
+         
+           <h1><a href="..\EMP_index.php">INGRESO de VEHICULO<span class="logo_colour"></span></a></h1>
         </div>
       </div>
       <div id="menubar">
         <ul id="menu">
-      
-          <li class="selected"><a href="..\indexEMP.html">Home</a></li>
-         <li><a href="checkin_vehiculo.php">Entrada Vehiculo</a></li>
+          
+          <li class="selected"><a href="..\EMP_index.php">Home</a></li>
+         <li><a href="checkin_vehiculo.php">INGRESO Vehiculo</a></li>
           <li><a href="checkout_vehiculo.php">Salida Vehiculo</a></li>
           <li><a href="..\login.html">LogOFF</a></li>
         </ul>
       </div>
     </div>
     <div id="site_content">
-      <div class="sidebar">
-       
-        <h3>Links utiles</h3>
-        <ul>
-         <li><a href="https://www.github.com/jngraziano">My Github</a></li>
-          <li><a href="https://www.w3schools.com/">W3school</a></li>
-          <li><a href="http://php.net/">PHP.NET</a></li>
-          <li><a href="http://www.sistemas-utnfra.com.ar/#/home">UTN Fra</a></li>
-        </ul>
-
-      </div>
       <div id="content">
-        <!-- insert the page content here -->
+
         <h1>Entrada de Vehiculo</h1>
-        <p>Esta es la pagina indicar la entrada de un vehiculo al sistema.</p><br>
-        <!--<p style="color:blue">prueba </p>-->
-     <form id="FormIngreso" method="post" action="administracion.php" >
-    <h3>Entrada vehiculo</h3>
+        <p>Esta es la pagina para realizar la entrada de un vehiculo al sistema.</p><br>
+
+     <form id="FormIngreso" method="post" >
+    <h3>Datos vehiculo</h3>
       
-      <input placeholder="Ingrese Patente" type="text" tabindex="1" name="Nombre1" required autofocus>
-      <input placeholder="Ingrese Color" type="text" tabindex="2" name="Color1" required autofocus>
-      <input placeholder="Ingrese Marca" type="text" tabindex="3" name="Marca1" required autofocus>
+      <input placeholder="Ingrese Patente" type="text" tabindex="1" id="patenteid" name="patente"  autofocus> 
+      <input placeholder="Ingrese Color" type="text" tabindex="2" id="colorid" name="color" autofocus>
+      <input placeholder="Ingrese Marca" type="text" tabindex="3" id="marcaid" name="marca"  autofocus>
       <br><br>
-      <button name="submit" type="Aceptar1" id="contact-submit" data-submit="...Cargando">Aceptar</button>
+      <button name="submit" type="Aceptar1" value="validar"  onclick="AccionesIngresoVehic('<?php echo $_GET['nombre']; ?>')" >Aceptar</button>
      
         </ul>
       </div>
@@ -70,5 +57,10 @@
       <!--Espacio-->
     </div>
   </div>
+   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+   
+    <script src="../js/funciones.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 </html>

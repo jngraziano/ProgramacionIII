@@ -1,5 +1,4 @@
 <?php
-//Incluimos la clase AccesoDatos.php que no estaba. La copiamos desde la Carpeta Clases de Clase06
 
 class Usuario
 {
@@ -11,7 +10,7 @@ class Usuario
 	private $Tipo;
 	private $Estado;
 //--------------------------------------------------------------------------------//
-//--GETTERS Y SETTERS
+//--GETTERS
 	public function GetNombre()
 	{
 		return $this->Nombre;
@@ -33,7 +32,7 @@ class Usuario
 		return $this->Estado;
 	}
 
-
+//--SETTERS
 	public function SetNombre($valor)
 	{
 		$this->Nombre = $valor;
@@ -146,10 +145,11 @@ class Usuario
         
             $consulta->execute();    
             $uno= $consulta->fetchAll();
+
             if($uno == NULL)
             {
-                $response_array['validacion'] = 'errorus';
-            }
+				$response_array['validacion']= 'errorus';
+			}
             else if($uno == TRUE )
             {
                 $objetoAcceso2 = AccesoDatos::DameUnObjetoAcceso();
@@ -161,17 +161,17 @@ class Usuario
                 
                 if($dos == TRUE)
                 {
-                    // $rta= "Bienvenido/a $nombre";
+                   
 					$response_array['validacion'] = 'ok';
-					$response_array['nombre'] = $nombre; 
+					$response_array['nombre'] 	= $nombre; 
 	                }
                 else
                 {
-                    // $rta= "Contraseña incorrecta";
+                    
 					$response_array['validacion'] = 'error';  
                 }
             }
-        // return $rta;
+       
 		return $response_array;
 	}
 
@@ -181,7 +181,7 @@ class Usuario
 			
     		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
             $consulta = $objetoAcceso->RetornarConsulta('SELECT tipo FROM usuarios WHERE nombre=:nombre');
-            $consulta->bindParam("nombre",$nombre);
+			$consulta->bindParam("nombre",$nombre);
             $consulta->execute();
             $dos= $consulta->fetchObject("Usuario");
 			return $response_array['tipo_empleado']= $dos->tipo;
