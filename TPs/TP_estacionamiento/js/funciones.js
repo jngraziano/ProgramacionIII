@@ -1,8 +1,9 @@
-//<----------------------------------------USUARIO------------------------>
+//<--------------------------PARTE USUARIO------------------------>
+
 //VALIDO USUARIO Y PASSWORDS
 function ValidarUsuario()
 {
-    var paginaValid = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/validarusuario";
+    var paginaValid = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/validarusuario";
 
 	var usuarioid = $("#usuarioid").val();
 	var passwordid = $("#passwordid").val();
@@ -27,7 +28,7 @@ function ValidarUsuario()
 			if(data.validacion == 'ok')
 			{
 				
-				var paginaTipoEmp = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/tipoempleado";
+				var paginaTipoEmp = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/tipoempleado";
 				var usuarioTipo = {};
 				usuarioTipo.usuarionombre = data.nombre;
 				//SEGUNDO AJAX - VERIFICA TIPO_EMPLEADO
@@ -45,7 +46,7 @@ function ValidarUsuario()
 							{
 								window.location.href = "./ADM_index.html"; 
 							}
-							else if (data == "EMPLEADO")
+							else if (data == "EMP")
 							{
 								
 								window.location.href = "./EMP_index.php?name=" + usuarioTipo.usuarionombre;  
@@ -78,7 +79,7 @@ function ValidarUsuario()
 function LoginBD()
 {
 	var usuarioid = $("#usuarioid").val();
-    var paginaLogin = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/loginbd/";
+    var paginaLogin = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/loginbd/";
 	var paginaFinal = paginaLogin.concat(usuarioid);
 
 	var usuarioLogin = {};
@@ -111,7 +112,7 @@ function AccionesIngreso ()
 function VehiculoEstacionado()
 {
 	var patente = $("#patenteid").val();
-    var paginaSlim = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/traerunVehiculo/";
+    var paginaSlim = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/traerunVehiculo/";
 	var paginaEstacionado = paginaSlim.concat(patente);
 	var succeed = false;
 	
@@ -144,7 +145,7 @@ function VehiculoEstacionado()
 function VehiculoExiste()
 {
 	var patente = $("#patenteid").val();
-    var paginaExiste = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/traerunVehiculo/";
+    var paginaExiste = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/traerunVehiculo/";
 	var paginaVehic = paginaExiste.concat(patente);
 
 	  var succeed = false;
@@ -176,7 +177,7 @@ function VehiculoExiste()
 
 function InsertarAutoBD($nro_cochera,$hora,$patente,$nombre)
 {
-	var paginaOperacion = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/insertarOperacion";
+	var paginaOperacion = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/insertarOperacion";
 	var datosOperacion = {};
 
 	datosOperacion.nrocochera = $nro_cochera;
@@ -211,7 +212,7 @@ function InsertarAutoBD($nro_cochera,$hora,$patente,$nombre)
 function TraerCocheraVacia()
 {
 	var patente = $("#patenteid").val();
-    var paginaCocheraVacia = "http://localhost:8080/Programacion3-2017/TP_ESTACIONAMIENTO/index.php/cocheravacia";
+    var paginaCocheraVacia = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/cocheravacia";
 
 	var auto = {};
 	auto.patente = patente;
@@ -292,7 +293,3 @@ function AccionesIngresoVehic ($nombre)
 	}
 
 }
-
-
-
-
