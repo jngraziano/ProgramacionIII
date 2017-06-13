@@ -26,7 +26,7 @@ function MostarLogin()
 {
 		
 	var funcionAjax=$.ajax({
-		url:"http://localhost/ProgramacionIII/CarpetaDami/PracticaParcial/mostrarlogin",
+		url:"http://localhost/ProgramacionIII/PracticaParcial(dami)/mostrarlogin",
 		type:"post"
 		//data:{queHacer:"MostarLogin"}
 	});
@@ -49,7 +49,7 @@ function MostrarAltaCd()
 	
 	// alert("llegue MostrarAltaCd");
 	var funcionAjax=$.ajax({
-		url:"http://localhost/ProgramacionIII/CarpetaDami/PracticaParcial/mostraralta",
+		url:"http://localhost/ProgramacionIII/PracticaParcial(dami)/mostraralta",
 		type:"post",
 		//data:{queHacer:"que hace"}
 		
@@ -65,7 +65,7 @@ function MostrarGrilla()
 	
 	//alert("llegue");
 	var funcionAjax=$.ajax({
-		url:"http://localhost/ProgramacionIII/CarpetaDami/PracticaParcial/mostrargrilla",
+		url:"http://localhost/ProgramacionIII/PracticaParcial(dami)/mostrargrilla",
 		type:"post",
 		data:{queHacer:"que hace"}
 	});
@@ -80,7 +80,7 @@ function MostrarModificacion()
 	
 	//alert("llegue");
 	var funcionAjax=$.ajax({
-		url:"http://localhost/ProgramacionIII/CarpetaDami/PracticaParcial/mostrarmodificacion",
+		url:"http://localhost/ProgramacionIII/PracticaParcial(dami)/mostrarmodificacion",
 		type:"post",
 		//data:{queHacer:"que hace"}
 	});
@@ -107,7 +107,7 @@ function validarLogin()
 	
 
 	var funcionAjax=$.ajax({
-		url:"http://localhost/ProgramacionIII/CarpetaDami/PracticaParcial/validarusuario",
+		url:"http://localhost/ProgramacionIII/PracticaParcial(dami)/validarusuario",
 		type:"post",
 		data:{
 			/*Estos son los parametros que manda al slim
@@ -153,7 +153,7 @@ function validarLogin()
 function deslogear()
 {	
 	var funcionAjax=$.ajax({
-		url:"http://localhost/ProgramacionIII/CarpetaDami/PracticaParcial/desloguear",
+		url:"http://localhost/ProgramacionIII/PracticaParcial(dami)/desloguear",
 		type:"post"		
 	});
 	funcionAjax.done(function(retorno){

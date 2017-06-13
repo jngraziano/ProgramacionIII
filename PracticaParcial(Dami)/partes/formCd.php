@@ -5,8 +5,8 @@
 session_start();
 if(isset($_SESSION['registrado'])){  ?>
     <div class="container">
-
-      <form class="form-ingreso" onsubmit="GuardarCD();return false" enctype="multipart/form-data" id="formcd">
+<!--;return false-->
+      <form class="form-ingreso" onsubmit="GuardarCD()" enctype="multipart/form-data" id="formcd">
         <h2 class="form-ingreso-heading">Alta de CD</h2>
         <label for="cantante" value="natalia" class="sr-only">Cantante</label>
         <input type="text"  minlength="6"  id="cantante" title="Se necesita un nombre de cantante" class="form-control" placeholder="Cantante" required="" autofocus="">

@@ -6,7 +6,7 @@ function BorrarCD(idParametro)
 	//alert("Estoy en Borrar cd y quiero borrar el cd "+idParametro);
 
 		var funcionAjax=$.ajax({
-		url:"http://localhost/ProgramacionIII/CarpetaDami/PracticaParcial/borrar",
+		url:"http://localhost/ProgramacionIII/PracticaParcial(dami)/borrar",
 		type:"delete",
 		data:{
 			//queHacer:"BorrarCD",
@@ -28,7 +28,7 @@ function EditarCD(idParametro)
 	//alert("entro al ajax de modificar CD");
 
 	var funcionAjax=$.ajax({
-		url:"http://localhost/ProgramacionIII/CarpetaDami/PracticaParcial/modificar",
+		url:"http://localhost/ProgramacionIII/PracticaParcial(dami)/modificar",
 		type:"post",
 		data:{
 			//queHacer:"TraerCD",
@@ -52,7 +52,7 @@ function EditarCD(idParametro)
 function GuardarCD()
 {
 
-	//alert("estoy en ajax de guardarCD");
+	
 	
 	
 	var inputFileImage = document.getElementById("foto");
@@ -75,7 +75,7 @@ function GuardarCD()
 		
 
 	var funcionAjax=$.ajax({
-		url:"http://localhost/ProgramacionIII/CarpetaDami/PracticaParcial/cd",
+		url:"http://localhost/ProgramacionIII/PracticaParcial(dami)/cd",
 		type:"post",
 		data:datosDelForm,
 		cache: false,
@@ -130,7 +130,7 @@ function UpdateCD()
 		
 
 	var funcionAjax=$.ajax({
-		url:"http://localhost/ProgramacionIII/CarpetaDami/PracticaParcial/update",
+		url:"http://localhost/ProgramacionIII/PracticaParcial(dami)/update",
 		type:"post",
 		data:datosDelForm,
 		cache: false,
