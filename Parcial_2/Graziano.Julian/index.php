@@ -23,7 +23,7 @@ $app = new \Slim\App(["settings" => $config]);
 
 
 
-//////////////////////////ARRANCA PARCIAL/////////////
+//////////////////////////ARRANCA 2 PARCIAL/////////////
 
 $app->post('/validarusuario', function (Request $request, Response $response) {
 
@@ -83,6 +83,26 @@ $app->delete('/bajabiciporid/[{id}]', function (Request $request, Response $resp
  $retorno=bicicletas::Baja($args['id']);
  return  $response->withJson($retorno);
 			
+});
+
+$app->post('/altaimagen', , function (Request $request, Response $response) {
+	$destino="./fotos/";
+  	$ArrayDeParametros = $request->getParsedBody();
+
+	  
+	  $archivos = $request->getUploadedFiles();
+
+
+	$nombreAnterior=$archivos['foto']->getClientFilename();
+	$extension= explode(".", $nombreAnterior)  ;
+	$extension=array_reverse($extension);
+
+  	$archivos['foto']->moveTo($destino.$titulo.".".$extension[0]);
+    
+	$path = $destino.$titulo.".".$extension[0];
+
+	//FALTA TERMINAR ESTO
+
 });
 
 $app->post('/modificar/[{id}]', function (Request $request, Response $response,$args) {
