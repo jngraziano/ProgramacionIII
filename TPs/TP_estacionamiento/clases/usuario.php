@@ -1,5 +1,5 @@
 <?php
-
+//Incluimos la clase AccesoDatos.php que no estaba. La copiamos desde la Carpeta Clases de Clase06
 class Usuario
 {
 //--------------------------------------------------------------------------------//
@@ -10,7 +10,7 @@ class Usuario
 	private $Tipo;
 	private $Estado;
 //--------------------------------------------------------------------------------//
-//--GETTERS
+//--GETTERS Y SETTERS
 	public function GetNombre()
 	{
 		return $this->Nombre;
@@ -31,8 +31,6 @@ class Usuario
 	{
 		return $this->Estado;
 	}
-
-//--SETTERS
 	public function SetNombre($valor)
 	{
 		$this->Nombre = $valor;
@@ -53,8 +51,6 @@ class Usuario
 	{
 		$this->Estado = $valor;
 	}
-
-
 //--------------------------------------------------------------------------------//
 //--CONSTRUCTOR
 	public function __construct( $Nombre=NULL, $Turno=NULL, $Password=NULL, $Tipo=NULL, $Estado=NULL)
@@ -67,7 +63,6 @@ class Usuario
 			$this->Estado = $Estado;
 		}
 	}
-
 //--------------------------------------------------------------------------------//
 //--TOSTRING	
   	public function ToString()
@@ -75,10 +70,8 @@ class Usuario
 	  	return $this->Nombre." - ".$this->Turno." - ".$this->Password."\r\n";
 	}
 //--------------------------------------------------------------------------------//
-
 //--------------------------------------------------------------------------------//
 //--METODOS DE CLASE
-
 	//ABM
 	public static function Alta($obj)
 	{
@@ -100,7 +93,6 @@ class Usuario
 		$consulta->bindvalue(':nombre',$obj[0], PDO::PARAM_STRING); //ARREGLAR
 		$consulta->Execute();
 	}
-
 	//TRAER BD
 	public static function TraerTodosLosusuarios()
 	{
@@ -115,7 +107,6 @@ class Usuario
 		 
 		 return $arrayRetorno;
 	}
-
 	public static function TraerUnUsuario($aux)
     {
         $objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
@@ -134,7 +125,6 @@ class Usuario
 		  }
         
     }
-
 	//VALIDAR
 	public static function ValidarUsuario($nombre,$password)
 	{
@@ -145,7 +135,6 @@ class Usuario
         
             $consulta->execute();    
             $uno= $consulta->fetchAll();
-
             if($uno == NULL)
             {
 				$response_array['validacion']= 'errorus';
@@ -161,20 +150,19 @@ class Usuario
                 
                 if($dos == TRUE)
                 {
-                   
+                    // $rta= "Bienvenido/a $nombre";
 					$response_array['validacion'] = 'ok';
-					$response_array['nombre'] 	= $nombre; 
+					$response_array['nombre'] = $nombre; 
 	                }
                 else
                 {
-                    
+                    // $rta= "Contraseña incorrecta";
 					$response_array['validacion'] = 'error';  
                 }
             }
-       
+        // return $rta;
 		return $response_array;
 	}
-
 	//INSERTAR LOGS
 	public static function ValidarTipoEmp ($nombre)
 	{
@@ -186,11 +174,9 @@ class Usuario
             $dos= $consulta->fetchObject("Usuario");
 			return $response_array['tipo_empleado']= $dos->tipo;
 	}
-
 	public static function InsertarBD ($nombre)
 	{
 			$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
-
             //Inserto en los LOGS generales
 			$hoy = date('Y-m-d');
 				
@@ -200,9 +186,7 @@ class Usuario
             $consulta->execute();
 		   return true;
 	}
-
 	
 	
-
 //--------------------------------------------------------------------------------//
 }
