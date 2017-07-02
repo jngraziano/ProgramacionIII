@@ -1,9 +1,8 @@
-//<--------------------------PARTE USUARIO------------------------>
-
+//<----------------------------------------USUARIO------------------------>
 //VALIDO USUARIO Y PASSWORDS
 function ValidarUsuario()
 {
-    var paginaValid = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/validarusuario";
+    var paginaValid = "http://localhost/ProgramacionIII/TPs/TP_estacionamiento/index.php/validarusuario";
 
 	var usuarioid = $("#usuarioid").val();
 	var passwordid = $("#passwordid").val();
@@ -28,7 +27,7 @@ function ValidarUsuario()
 			if(data.validacion == 'ok')
 			{
 				
-				var paginaTipoEmp = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/tipoempleado";
+				var paginaTipoEmp = "http://localhost/ProgramacionIII/TPs/TP_estacionamiento/index.php/tipoempleado";
 				var usuarioTipo = {};
 				usuarioTipo.usuarionombre = data.nombre;
 				//SEGUNDO AJAX - VERIFICA TIPO_EMPLEADO
@@ -46,7 +45,7 @@ function ValidarUsuario()
 							{
 								window.location.href = "./ADM_index.html"; 
 							}
-							else if (data == "EMP")
+							else if (data == "EMPLEADO")
 							{
 								
 								window.location.href = "./EMP_index.php?name=" + usuarioTipo.usuarionombre;  
@@ -79,7 +78,7 @@ function ValidarUsuario()
 function LoginBD()
 {
 	var usuarioid = $("#usuarioid").val();
-    var paginaLogin = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/loginbd/";
+    var paginaLogin = "http://localhost/ProgramacionIII/TPs/TP_estacionamiento/index.php/loginbd/";
 	var paginaFinal = paginaLogin.concat(usuarioid);
 
 	var usuarioLogin = {};
@@ -112,7 +111,7 @@ function AccionesIngreso ()
 function VehiculoEstacionado()
 {
 	var patente = $("#patenteid").val();
-    var paginaSlim = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/traerunVehiculo/";
+    var paginaSlim = "http://localhost/ProgramacionIII/TPs/TP_estacionamiento/index.php/traerunVehiculo/";
 	var paginaEstacionado = paginaSlim.concat(patente);
 	var succeed = false;
 	
@@ -145,7 +144,7 @@ function VehiculoEstacionado()
 function VehiculoExiste()
 {
 	var patente = $("#patenteid").val();
-    var paginaExiste = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/traerunVehiculo/";
+    var paginaExiste = "http://localhost/ProgramacionIII/TPs/TP_estacionamiento/index.php/traerunVehiculo/";
 	var paginaVehic = paginaExiste.concat(patente);
 
 	  var succeed = false;
@@ -177,7 +176,7 @@ function VehiculoExiste()
 
 function InsertarAutoBD($nro_cochera,$hora,$patente,$nombre)
 {
-	var paginaOperacion = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/insertarOperacion";
+	var paginaOperacion = "http://localhost/ProgramacionIII/TPs/TP_estacionamiento/index.php/insertarOperacion";
 	var datosOperacion = {};
 
 	datosOperacion.nrocochera = $nro_cochera;
@@ -212,7 +211,7 @@ function InsertarAutoBD($nro_cochera,$hora,$patente,$nombre)
 function TraerCocheraVacia()
 {
 	var patente = $("#patenteid").val();
-    var paginaCocheraVacia = "http://localhost:80/ProgramacionIII/TPs/TP_ESTACIONAMIENTO/index.php/cocheravacia";
+    var paginaCocheraVacia = "http://localhost/ProgramacionIII/TPs/TP_estacionamiento/index.php/cocheravacia";
 
 	var auto = {};
 	auto.patente = patente;
@@ -245,29 +244,7 @@ function TraerCocheraVacia()
 }
 
 ////////////////////////////////////////////OPERACIONES////////////////////////
-//SALIDA DEL VEHICULO
-function AccionesSalidaVehic()
-{
-	if( VehiculoExiste()) //Verifico si existe el vehículo
-	{
-		 if(VehiculoEstacionado())
-		 {
-			alert("estacionado");
-		 } 
-		 else
-		 {
-			 alert ("no estacionado");
-		 }
-	}
-	else 
-	{
-		alert ("no existe");
-	}
-}
-
-
-
-// //INGRESO DEL VEHICULO
+//INGRESO DEL VEHICULO
 function AccionesIngresoVehic ($nombre)
 {
 	var patente = $("#patenteid").val();
@@ -287,9 +264,32 @@ function AccionesIngresoVehic ($nombre)
 	alert($mensaje);
 	
 	//INSERTAR EN LA BASE
-	if(InsertarAutoBD(nro_cochera,hora,patente,nombre))
+	if(InsertarAutoBD(nro_ccochera,hora,patente,nombre))
 	{
 		alert("El vehiculo fue ingresado al  sistema");
 	}
+}
+//EGRESO DEL VEHICULO
 
+function AccionesEgresoVehic ()
+{
+	var patente = $("#patenteid").val();
+	//VERIFICAR SI ESTA ESTACIONADO
+	if( VehiculoExiste()) //Verifico si existe el vehículo
+	{
+		
+		 if(VehiculoEstacionado())
+		 {
+			alert("estacionado");
+			
+		 } 
+		 else
+		 {
+			 alert ("no estacionado");
+		 }
+	}
+	else 
+	{
+		alert ("no existe");
+	}
 }

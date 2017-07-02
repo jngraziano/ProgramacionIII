@@ -1,9 +1,9 @@
 <?php
-require "/clases/AccesoDatos.php";
-require '/vendor/autoload.php';
-require '/clases/usuario.php';
-require '/clases/vehiculo.php';
-require '/clases/cochera.php';
+require __DIR__.'/clases/AccesoDatos.php';
+require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/clases/usuario.php';
+require __DIR__.'/clases/vehiculo.php';
+require __DIR__.'/clases/cochera.php';
 
 $app = new \Slim\App;
     

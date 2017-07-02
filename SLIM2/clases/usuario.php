@@ -5,10 +5,10 @@ class Usuario
 {
 //--------------------------------------------------------------------------------//
 //--ATRIBUTOS
-	private $id;
-	private $mail;
-	private $estado;
-	private $clave;
+	public $id;
+	public $mail;
+	public $estado;
+	public $clave;
 //--------------------------------------------------------------------------------//
 
 //--------------------------------------------------------------------------------//
@@ -107,27 +107,20 @@ class Usuario
 
 public static function TraerTodosLosUsuariosBD()
 	{
-		//http://localhost:8080/ProgramacionIII/Clase06/# aca tenemos los distintos tipos de fetch
 		$arrayRetorno = array();
 		//Este Metodo esta creado por nosotros este.
 		$objetoAcceso = AccesoDatos::DameUnObjetoAcceso();
 		$consulta = $objetoAcceso->RetornarConsulta('SELECT * FROM usuario');
-		$consulta->Execute();//Es para ejecutar la consulta.
-		// $datos =$consulta->fetchall();
-		// $datos_2 = $consulta->fetch(PDO::FETCH_LAZY);
-		// $datos_3 = $consulta -> fetchObject("producto");
-		// var_dump($consulta);
-		//	var_dump($datos);
-		// var_dump($datos_2);
-		 while ($fila = $consulta->fetchObject("Usuario")) //devuelve true o false depende si encuentra o no el objeto. 
-		 //Sale cuando es false claramente.
-		 {//FETCHOBJECT -> RETORNA UN OBJETO DE UNA CALSE DADA
-              // var_dump($fila);
-			 array_push($arrayRetorno,$fila);
-		 }
+		$consulta->Execute();
+		return $consulta->fetchAll(PDO::FETCH_CLASS, "usuario");		
+		//  while ($fila = $consulta->fetchObject("Usuario")) //devuelve true o false depende si encuentra o no el objeto. 
+		//  //Sale cuando es false claramente.
+		//  {//FETCHOBJECT -> RETORNA UN OBJETO DE UNA CALSE DADA
+        //       // var_dump($fila);
+		// 	 array_push($arrayRetorno,$fila);
+		//  }
 		 
-		 return $arrayRetorno;
-		// var_dump($datos_3);
+		//  return $arrayRetorno;
 	}
 public static function TraerUnUsuarioBD($aux)
     {
